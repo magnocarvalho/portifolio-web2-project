@@ -1,26 +1,23 @@
-<mat-toolbar class="backgroud-procura" fxLayout="row" fxLayoutAlign="space-between center">
+<mat-toolbar fxLayout="row" fxLayoutAlign="space-between center">
 
-  <span class="" fxFlex="20">
-    <button mat-icon-button class="menu" (click)="abrirmenu(sidenav)">
-      <mat-icon>{{menu}}</mat-icon>
+  <span class="">
+    <button mat-icon-button class="" (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
     </button>
-
   </span>
-  <span class="toolbar-name" fxFlex="60">
-    <h2>{{titulo}}</h2>
+  <span class="" >
+    <h2>Portifolio Web</h2>
   </span>
-  <span class="toolbar-name" fxFlex="20">
-    <h4 *ngIf="menuPular">Pular</h4>
-  </span>
+  
 </mat-toolbar>
-<mat-sidenav-container class="sidenav-containner-procura backgroud-procura">
-  <mat-sidenav #sidenav mode="over">
-    <mat-nav-list class="backgroud-procura">
+<mat-sidenav-container class="">
+  <mat-sidenav #sidenav mode="side">
+    <mat-nav-list class="">
       <a mat-list-item>Telas</a>
     </mat-nav-list>
     
   </mat-sidenav>
-  <mat-sidenav-content class="backgroud-procura">
+  <mat-sidenav-content>
     <ng-content></ng-content>
   </mat-sidenav-content>
 </mat-sidenav-container>

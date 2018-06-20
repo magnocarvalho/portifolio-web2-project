@@ -4,7 +4,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing';
 import { LoginComponent } from './login/login.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCheckboxModule, MatCardModule} from '@angular/material';
+import {MatButtonModule, MatCheckboxModule, MatSidenavModule, MatSidenavContainer, MatListModule, MatNativeDateModule, MatToolbarModule, MatIconModule, MatCardModule} from '@angular/material';
 import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
@@ -12,7 +12,6 @@ import { MenuComponent } from './menu/menu.component';
     AppComponent,
     LoginComponent,
     MenuComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -20,7 +19,12 @@ import { MenuComponent } from './menu/menu.component';
     BrowserAnimationsModule,
     MatButtonModule, 
     MatCheckboxModule,
-    MatCardModule
+    MatCardModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatNativeDateModule,
+    MatListModule,
+    MatSidenavModule
   ],
   providers: [],
   bootstrap: [AppComponent]
