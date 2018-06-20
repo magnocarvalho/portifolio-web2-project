@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing';
 import { LoginComponent } from './login/login.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCheckboxModule, MatSidenavModule, MatSidenavContainer, MatListModule, MatNativeDateModule, MatToolbarModule, MatIconModule, MatCardModule} from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule, MatCheckboxModule, MatSidenavModule, MatListModule, MatNativeDateModule, MatToolbarModule, MatIconModule, MatCardModule, MatFormFieldModule } from '@angular/material';
 import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
@@ -17,14 +17,15 @@ import { MenuComponent } from './menu/menu.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatButtonModule, 
+    MatButtonModule,
     MatCheckboxModule,
     MatCardModule,
     MatIconModule,
     MatToolbarModule,
     MatNativeDateModule,
     MatListModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]
