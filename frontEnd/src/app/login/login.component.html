@@ -1,13 +1,13 @@
 <app-menu>
- 
-            <mat-form-field>
-                    <input matInput type="email"  placeholder="Email"  >
-                    
-            </mat-form-field>
-            <mat-form-field>
-                    <input matInput  type="password"  placeholder="Senha" >
-                   
-            </mat-form-field>
-            <button mat-button (click)="goToLogin($event)">Action</button>
-        
+        <form [formGroup]="form">
+                <mat-form-field>
+                        <input matInput type="email" placeholder="Email" formControlName="email">
+                </mat-form-field>
+                <mat-form-field>
+                        <input matInput type="password" placeholder="Senha" formControlName="pass">
+                </mat-form-field>
+                <button mat-button (click)="goToLogin($event)">Entrar</button>
+        </form>
+
+
 </app-menu>
