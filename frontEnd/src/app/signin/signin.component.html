@@ -1,0 +1,21 @@
+<app-menu>
+  <form [formGroup]="form" fxLayout="column" fxFlexAlign="center center">
+    <div fxLayout="column" fxLayoutAlign="start stretch">
+      <mat-form-field class="inputs">
+        <input matInput type="text" placeholder="Nome" formControlName="nome">
+      </mat-form-field>
+      <mat-divider></mat-divider>
+      <mat-form-field class="inputs">
+        <input matInput type="email" placeholder="Email" formControlName="email">
+      </mat-form-field>
+      <mat-form-field class="inputs">
+        <input matInput type="password" placeholder="Senha" formControlName="pass">
+      </mat-form-field>
+      <mat-divider></mat-divider>
+      <div class="btn-entrar" fxLayout="column" fxLayoutAlign="center stretch">
+        <button mat-raised-button color="accent" (click)="goToCriaLogin($event)">Entrar</button>
+      </div>
+
+    </div>
+  </form>
+</app-menu>
