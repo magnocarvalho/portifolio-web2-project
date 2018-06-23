@@ -15,22 +15,23 @@ class PhotoCtlr{
       static putPhotos(req, res, next) {
         var obj = req.body;
         var nomeAlbum = obj.nome;
-        var nomePhoto = obj.photos[0];
+        var nomePhoto = obj.photos;
         var userId = obj.userID;
-        if (obj.photos[0]) {
+        console.log(userId);
+        if (obj.photos) {
           var base64Data = obj.photos.replace(/^data:image\/[a-z]+;base64,/, "");
-          obj.photos[0] = nomePhoto +  ".png";
-          fs.writeFile(
-            "./bin/assets/"+ userId + "/" + nomeAlbum  + "/"+ nomePhoto + ".png",
-            base64Data,
-            "base64",
-            function(err) {
-              if (err) console.log("err = " + err);
-            }
-          );
-        }
+          obj.photos = userId + ".png";
+          fs.mkdirSync("./bin/assets/"+userId+"/" + nomeAlbum + "/");
+          fs.writeFile("./bin/assets/" + userId  +"/"+ nomeAlbum + "/foto.png", base64Data, 'base64', function (err) {
+              if (err)
+                  console.log("err = " + err);
+          });
+      }
+        photosModel.create(obj, (err, data) => {
+          if (err) next(err);
+          else res.json(data);
+        });
     }
-
 }
 export default PhotoCtlr;
 

@@ -8,6 +8,6 @@ var router = express.Router();
 router.post('/salvarUsuario', UsuarioCtrl.create);
 router.post('/loginUser', UsuarioCtrl.login);
 
-router.post('/salvarFotos', PhotoCtlr.create);
+router.post('/salvarFotos', PhotoCtlr.putPhotos);
 
 export = router;

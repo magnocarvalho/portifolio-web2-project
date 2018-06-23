@@ -11,22 +11,25 @@ import { AuthService } from '../services/auth.service';
 export class PhotoComponent implements OnInit {
 
   constructor(private api: ApiService, private user: AuthService) { }
-  usuario: any;
+  public usuario: any;
+  public id: String;
+  
   ngOnInit() {
-    this.usuario = this.user.getUsuario;
+    this.usuario = this.user.getUsuario();
+    this.id = this.usuario._id;
   }
   form = new FormGroup({
     nome: new FormControl('', [Validators.required]),
     photos: new FormControl()
   })
-  imagens = [];
+  imagens : any;
 
   foto(e) {
     const reader = new FileReader();
     const rawImg: File = e.target.files[0];
     let result: string;
     reader.onload = (img) => {
-      this.imagens.push([reader.result]);
+      this.imagens = reader.result;
     };
     reader.readAsDataURL(rawImg);
 
@@ -37,8 +40,9 @@ export class PhotoComponent implements OnInit {
     var obj = {
       nome: this.form.get('nome').value,
       photos: this.imagens,
-      userID: this.usuario._id
+      userID: this.id
     }
+    console.log(obj.userID);
     this.api.salvarFotos(obj).subscribe(res =>{
       console.log(res);
     })

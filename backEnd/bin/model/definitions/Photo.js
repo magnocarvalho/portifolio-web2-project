@@ -4,7 +4,7 @@ const IDefault_1 = require("./IDefault");
 const mongoose = require("mongoose");
 let schema = {
     nome: { type: String },
-    photos: { type: Array },
+    photos: { type: String },
     userID: { type: mongoose.Schema.Types.ObjectId, ref: 'Usuario' }
 };
 IDefault_1.Inject(schema);
