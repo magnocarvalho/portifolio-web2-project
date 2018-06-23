@@ -3,3 +3,12 @@
   <span><button mat-raised-button><mat-icon>add_circle_outline</mat-icon>Fotos</button></span>
   <span><button mat-raised-button><mat-icon>exit_to_app</mat-icon>Logout</button></span>
 </mat-toolbar>
+<form fxLayout="column" fxLayoutAlign="space-between stretch" [formGroup]="form">
+    <mat-form-field class="encaixar entrada-texto">
+        <input matInput placeholder="Nome do album" type="tel" formControlName="nome">
+      </mat-form-field>
+  <div class="encaixar entrada-texto btlLogo" >
+    <input type="file" accept="image/*" formControlName="photos" (change)="foto($event)" multiple>
+  </div>
+  <button mat-button (click)="onSalvarPhotos($event)">Action</button>
+</form>

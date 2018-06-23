@@ -4,7 +4,8 @@ const IDefault_1 = require("./IDefault");
 const mongoose = require("mongoose");
 let schema = {
     nome: { type: String },
-    photos: { type: Array } // arry com as fotos do album
+    photos: { type: Array },
+    userID: { type: mongoose.Schema.Types.ObjectId, ref: 'Usuario' }
 };
 IDefault_1.Inject(schema);
 exports.photosMasterSchema = new mongoose.Schema(schema);

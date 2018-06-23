@@ -16,12 +16,9 @@ class UsuarioCtrl {
         var obj = req.body;
         var email = obj.email;
         var pass = obj.pass;
-        UsuarioCtrl.getByEmail(email).then(data => {
-            if (data.pass === pass) {
+        UsuarioCtrl.getByLogin(email, pass).then(data => {
+            if (data) {
                 res.json(data);
-            }
-            else {
-                res.json('erro senha errada');
             }
         }, err => {
             next(err);
@@ -65,9 +62,9 @@ class UsuarioCtrl {
             });
         });
     }
-    static getByEmail(email) {
+    static getByLogin(email, pass) {
         return new Promise((resolve, reject) => {
-            Usuario_1.UsuarioModel.findOne({ isDeleted: false, email: email }, (err, data) => {
+            Usuario_1.UsuarioModel.findOne({ isDeleted: false, email: email, pass: pass }, { pass: 0 }, (err, data) => {
                 if (err || data === null)
                     reject(err);
                 else {

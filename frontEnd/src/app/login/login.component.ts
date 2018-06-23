@@ -36,10 +36,8 @@ export class LoginComponent implements OnInit {
       email: this.form.get('email').value,
       pass: this.form.get('pass').value
     }).subscribe(result => {
-      console.log(result);
       this.route.navigate(['/photos']);
     }, err => {
-      console.error(err);
       this.openSnackBar('Erro no login');
     });
   }

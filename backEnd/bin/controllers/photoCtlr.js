@@ -14,11 +14,13 @@ class PhotoCtlr {
     }
     static putPhotos(req, res, next) {
         var obj = req.body;
-        var id = obj.id;
-        if (obj.logo) {
-            var base64Data = obj.logo.replace(/^data:image\/[a-z]+;base64,/, "");
-            obj.logo = id + ".png";
-            fs.writeFile("./bin/assets/" + id + ".png", base64Data, "base64", function (err) {
+        var nomeAlbum = obj.nome;
+        var nomePhoto = obj.photos[0];
+        var userId = obj.userID;
+        if (obj.photos[0]) {
+            var base64Data = obj.photos.replace(/^data:image\/[a-z]+;base64,/, "");
+            obj.photos[0] = nomePhoto + ".png";
+            fs.writeFile("./bin/assets/" + userId + "/" + nomeAlbum + "/" + nomePhoto + ".png", base64Data, "base64", function (err) {
                 if (err)
                     console.log("err = " + err);
             });
