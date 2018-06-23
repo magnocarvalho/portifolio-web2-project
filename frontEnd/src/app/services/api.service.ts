@@ -24,9 +24,7 @@ export class ApiService {
   public doRequest(method: 'post' | 'put' | 'delete' | 'get', url, data: any = null): Observable<any> {
     return new Observable(obs => {
       this.request(method, url, data, obs);
-    }).map((res: Response) => {
-      return res.json();
-    });;
+    })
   }
 
   private request(method: 'post' | 'put' | 'delete' | 'get', url, data: any = null, obs) {
@@ -59,5 +57,9 @@ export class ApiService {
     }
     else
       this.http[method](this.URL + url, data, options).subscribe(callback, callback);
+  }
+  buscarUsuario(id)
+  {
+     return this.doRequest('get', 'buscarUsuario/'+ id);
   }
 }
