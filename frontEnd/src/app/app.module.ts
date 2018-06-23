@@ -7,7 +7,7 @@ import { MenuComponent } from './menu/menu.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { AppRoutes } from './app.routes';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -21,7 +21,8 @@ import {
   MatProgressBarModule,
   MatRadioModule,
   MatToolbarModule,
-  MatMenuModule
+  MatMenuModule,
+  MatInputModule
 } from '@angular/material';
 
 
@@ -38,7 +39,8 @@ import {
     FormsModule, MatButtonModule, MatCheckboxModule, BrowserAnimationsModule,
     MatGridListModule, MatCardModule, FlexLayoutModule, AppRoutes,
     MatFormFieldModule, MatProgressBarModule, MatRadioModule,
-    MatToolbarModule, MatMenuModule, MatCardModule
+    MatToolbarModule, MatMenuModule, MatCardModule, MatInputModule, 
+    ReactiveFormsModule
   ],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]

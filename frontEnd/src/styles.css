@@ -1,1 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+.container
+{
+    width: 100%;
+    height: 100%;
+
+}
+.login-ctrl
+{
+    min-width: 300px;
+    width: 100px;
+    max-width: 500px;
+    min-height: 300px;
+    max-height: 500px;
+    height: 100%;
+    background-color: #ffeff2;
+    margin: 0 auto;
+}

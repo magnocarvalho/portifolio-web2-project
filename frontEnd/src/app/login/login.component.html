@@ -1,5 +1,36 @@
-<div class="login-ctrl">
-  <form>
-      <h1>Fazer login</h1>
-  </form>
+<mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="space-between center">
+  <span>Fazer login</span>
+  <span>
+    <button mat-raised-button (click)="criarLogin()">Criar Login</button>
+  </span>
+</mat-toolbar>
+<div class="container" fxLayout="column" fxLayoutAlign="space-between center">
+  <div class="login-ctrl" fxLayout="column" fxLayoutAlign="center center">
+    <form [formGroup]="form" fxLayout="column" fxLayoutAlign="center center">
+      <mat-form-field class="entrada-texto">
+        <input matInput placeholder="E-mail" type="email" required formControlName="email">
+        <mat-error *ngIf="form.get('email').hasError('email') && !form.get('email').hasError('required')">
+          Entre com um email valido
+        </mat-error>
+        <mat-error *ngIf="form.get('email').hasError('required')">
+          Email é
+          <strong>exigido</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="entrada-texto">
+        <input type="password" matInput placeholder="Senha" required formControlName="pass">
+        <mat-error *ngIf="form.get('pass').hasError('required')">
+          Senha é
+          <strong>exigido</strong>
+        </mat-error>
+        <mat-error *ngIf="form.get('pass').hasError('minlength')">
+          Senha menor que 6 caracteres
+        </mat-error>
+      </mat-form-field>
+      <button mat-button color="primary" (click)="fazerLogin()">Entar</button>
+    </form>
+  </div>
+  <div>
+    <label>UTFPR CP</label>
+  </div>
 </div>
