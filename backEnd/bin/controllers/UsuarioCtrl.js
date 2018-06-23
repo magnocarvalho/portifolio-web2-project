@@ -1,26 +1,31 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const Usuario_1 = require("../model/definitions/Usuario");
-const fs = require('fs');
+const fs = require("fs");
 class UsuarioCtrl {
     static create(req, res, next) {
         var obj = req.body;
-        UsuarioCtrl.getByEmail(obj.email).then(data => {
-            res.json(data);
+        Usuario_1.UsuarioModel.create(obj, (err, data) => {
+            if (err)
+                next(err);
+            else
+                res.json(data);
+        });
+    }
+    static login(req, res, next) {
+        var obj = req.body;
+        var email = obj.email;
+        var pass = obj.pass;
+        UsuarioCtrl.getByEmail(email).then(data => {
+            if (data.pass === pass) {
+                res.json(data);
+            }
+            else {
+                res.json('erro senha errada');
+            }
         }, err => {
             next(err);
         });
-        if (res) {
-            return;
-        }
-        else {
-            Usuario_1.UsuarioModel.create(obj, (err, data) => {
-                if (err)
-                    next(err);
-                else
-                    res.json(data);
-            });
-        }
     }
     static putDadosUsuario(req, res, next) {
         var obj = req.body;
@@ -28,7 +33,7 @@ class UsuarioCtrl {
         if (obj.logo) {
             var base64Data = obj.logo.replace(/^data:image\/[a-z]+;base64,/, "");
             obj.logo = id + ".png";
-            fs.writeFile("./bin/assets/" + id + ".png", base64Data, 'base64', function (err) {
+            fs.writeFile("./bin/assets/" + id + ".png", base64Data, "base64", function (err) {
                 if (err)
                     console.log("err = " + err);
             });

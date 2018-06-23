@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { MenuComponent } from './menu/menu.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RouterModule } from '@angular/router';
@@ -23,26 +22,30 @@ import {
   MatToolbarModule,
   MatMenuModule,
   MatInputModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatIconModule,
+  MatSidenavModule,
+  MatListModule
 } from '@angular/material';
 import { HttpModule } from '@angular/http';
+import { PhotoComponent } from './photo/photo.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    MenuComponent,
     CreateUserComponent,
-    DashboardComponent
+    DashboardComponent,
+    PhotoComponent
   ],
   imports: [
     BrowserModule, RouterModule, MatButtonModule, MatCheckboxModule,
     FormsModule, MatButtonModule, MatCheckboxModule, BrowserAnimationsModule,
     MatGridListModule, MatCardModule, FlexLayoutModule, AppRoutes,
     MatFormFieldModule, MatProgressBarModule, MatRadioModule,
-    MatToolbarModule, MatMenuModule, MatCardModule, MatInputModule, 
-    ReactiveFormsModule, MatSnackBarModule, HttpModule
+    MatToolbarModule, MatMenuModule, MatCardModule, MatInputModule,
+    ReactiveFormsModule, MatSnackBarModule, HttpModule, MatIconModule, MatSidenavModule, MatListModule
   ],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]

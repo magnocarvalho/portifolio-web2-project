@@ -23,40 +23,42 @@ export class CreateUserComponent implements OnInit {
     }
   );
 
-  fazerLogin(e)
-  {
+  fazerLogin(e) {
     //comunica com o backend e aguarda a resposta.
     e.preventDefault();
     this.logar.registarUsuario({
       nome: this.form.get('nome').value,
-          email: this.form.get('email').value,
-          pass: this.form.get('senha').value
+      email: this.form.get('email').value,
+      pass: this.form.get('pass').value
     }).subscribe(result => {
       this.doLogin(e);
     }, err => {
+      console.log(err);
       if (err.code === 'auth/email-already-in-use') {
         this.openSnackBar('E-mail ja cadastrado');
       }
     });
   }
   openSnackBar(frase) {
-     this.snackEmail.open(frase, 'OK', {
+    this.snackEmail.open(frase, 'OK', {
       duration: 3000
     });
   }
-  doLogin(e)
-  {
+  doLogin(e) {
     e.preventDefault();
-    this.logar.login(this.form.get('email').value, this.form.get('senha').value).subscribe(result => {
+    this.logar.login({
+      email: this.form.get('email').value,
+      pass: this.form.get('pass').value
+    }).subscribe(result => {
       console.log(result);
       this.route.navigate(['/dashboard']);
     }, err => {
+      console.error(err);
       this.openSnackBar('Erro no login');
     });
   }
 
-  criarLogin()
-  {
+  criarLogin() {
     this.route.navigate(['/login']);
   }
 

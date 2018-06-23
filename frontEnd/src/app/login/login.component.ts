@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators, FormGroup, FormGroupDirective, NgForm} from '@angular/forms';
-import { ErrorStateMatcher } from '@angular/material';
+import { ErrorStateMatcher, MatSnackBarConfig, MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
 
 export class LoginComponent implements OnInit {
 
-  constructor(private route: Router) { }
+  constructor(private route: Router, private logar: AuthService, private snackEmail: MatSnackBar) { }
 
   ngOnInit() {
   }
@@ -21,10 +22,26 @@ export class LoginComponent implements OnInit {
       pass: new FormControl('', [Validators.required, Validators.minLength(6)])
     }
   );
+  openSnackBar(frase) {
+    this.snackEmail.open(frase, 'OK', {
+      duration: 6000
+    });
+  }
 
-  fazerLogin()
+  fazerLogin(e)
   {
     //comunica com o backend e aguarda a resposta.
+    e.preventDefault();
+    this.logar.login({
+      email: this.form.get('email').value,
+      pass: this.form.get('pass').value
+    }).subscribe(result => {
+      console.log(result);
+      this.route.navigate(['/photos']);
+    }, err => {
+      console.error(err);
+      this.openSnackBar('Erro no login');
+    });
   }
   criarLogin()
   {

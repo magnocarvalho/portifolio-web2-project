@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { OnInit, NgModule } from '@angular/core';
+import { PhotoComponent } from './photo/photo.component';
 
 const routes: Routes = [
     {
@@ -17,6 +18,10 @@ const routes: Routes = [
     {
         path:'dashboard',
         component: DashboardComponent
+    },
+    {
+        path: 'photos',
+        component: PhotoComponent
     }
 ];
 

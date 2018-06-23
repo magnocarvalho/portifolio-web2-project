@@ -8,7 +8,7 @@ import * as path from 'path';
 import * as mongoose from 'mongoose';
 import * as bodyParser from 'body-parser';
 import * as routes from './routes/api';
-import * as admin from 'firebase-admin';
+
 
 var app = express();
 

@@ -62,4 +62,17 @@ export class ApiService {
   {
      return this.doRequest('get', 'buscarUsuario/'+ id);
   }
+  salvarUser(obj)
+  {
+    return this.doRequest('post', 'salvarUsuario', obj);
+  }
+  fazerLogin(obj)
+  {
+    return this.doRequest('post', 'loginUser', obj);
+  }
+  salvarFotos(obj)
+  {
+    return this.doRequest('post', 'salvarFotos', obj);
+  }
+
 }
