@@ -25,6 +25,7 @@ import {
   MatInputModule,
   MatSnackBarModule
 } from '@angular/material';
+import { HttpModule } from '@angular/http';
 
 
 @NgModule({
@@ -41,7 +42,7 @@ import {
     MatGridListModule, MatCardModule, FlexLayoutModule, AppRoutes,
     MatFormFieldModule, MatProgressBarModule, MatRadioModule,
     MatToolbarModule, MatMenuModule, MatCardModule, MatInputModule, 
-    ReactiveFormsModule, MatSnackBarModule
+    ReactiveFormsModule, MatSnackBarModule, HttpModule
   ],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]

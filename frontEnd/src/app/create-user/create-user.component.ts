@@ -48,6 +48,7 @@ export class CreateUserComponent implements OnInit {
   {
     e.preventDefault();
     this.logar.login(this.form.get('email').value, this.form.get('senha').value).subscribe(result => {
+      console.log(result);
       this.route.navigate(['/dashboard']);
     }, err => {
       this.openSnackBar('Erro no login');
