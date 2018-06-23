@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "web2-portifolio": {
+    "web2-app": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/web2-portifolio",
+            "outputPath": "dist/web2-app",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -50,18 +50,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "web2-portifolio:build"
+            "browserTarget": "web2-app:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "web2-portifolio:build:production"
+              "browserTarget": "web2-app:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "web2-portifolio:build"
+            "browserTarget": "web2-app:build"
           }
         },
         "test": {
@@ -95,7 +95,7 @@
         }
       }
     },
-    "web2-portifolio-e2e": {
+    "web2-app-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -103,11 +103,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "web2-portifolio:serve"
+            "devServerTarget": "web2-app:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "web2-portifolio:serve:production"
+              "devServerTarget": "web2-app:serve:production"
             }
           }
         },
@@ -123,5 +123,5 @@
       }
     }
   },
-  "defaultProject": "web2-portifolio"
+  "defaultProject": "web2-app"
 }

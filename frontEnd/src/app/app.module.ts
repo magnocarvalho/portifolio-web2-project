@@ -1,14 +1,28 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+
 import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing';
 import { LoginComponent } from './login/login.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatCheckboxModule, MatSidenavModule, MatListModule, MatNativeDateModule, MatToolbarModule, MatIconModule, MatCardModule, MatInputModule } from '@angular/material';
 import { MenuComponent } from './menu/menu.component';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SigninComponent } from './signin/signin.component';
+import { CreateUserComponent } from './create-user/create-user.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { AppRoutes } from './app.routes';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {
+  MatButtonModule,
+  MatCheckboxModule,
+  MatCardModule,
+  MatGridListModule,
+  MatFormFieldModule,
+  MatProgressBarModule,
+  MatRadioModule,
+  MatToolbarModule,
+  MatMenuModule
+} from '@angular/material';
 
 
 @NgModule({
@@ -16,30 +30,17 @@ import { SigninComponent } from './signin/signin.component';
     AppComponent,
     LoginComponent,
     MenuComponent,
-    SigninComponent,
-   
+    CreateUserComponent,
+    DashboardComponent
   ],
   imports: [
-    BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatButtonModule,
-    MatCheckboxModule,
-    MatCardModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatNativeDateModule,
-    MatListModule,
-    MatSidenavModule,
-    MatFormFieldModule,
-    MatInputModule
-
+    BrowserModule, RouterModule, MatButtonModule, MatCheckboxModule,
+    FormsModule, MatButtonModule, MatCheckboxModule, BrowserAnimationsModule,
+    MatGridListModule, MatCardModule, FlexLayoutModule, AppRoutes,
+    MatFormFieldModule, MatProgressBarModule, MatRadioModule,
+    MatToolbarModule, MatMenuModule, MatCardModule
   ],
-  providers: [],
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]
 })
-
 export class AppModule { }
