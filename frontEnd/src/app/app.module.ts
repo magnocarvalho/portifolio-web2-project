@@ -22,7 +22,8 @@ import {
   MatRadioModule,
   MatToolbarModule,
   MatMenuModule,
-  MatInputModule
+  MatInputModule,
+  MatSnackBarModule
 } from '@angular/material';
 
 
@@ -40,7 +41,7 @@ import {
     MatGridListModule, MatCardModule, FlexLayoutModule, AppRoutes,
     MatFormFieldModule, MatProgressBarModule, MatRadioModule,
     MatToolbarModule, MatMenuModule, MatCardModule, MatInputModule, 
-    ReactiveFormsModule
+    ReactiveFormsModule, MatSnackBarModule
   ],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]

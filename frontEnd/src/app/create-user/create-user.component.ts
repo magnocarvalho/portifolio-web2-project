@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-create-user',
@@ -9,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class CreateUserComponent implements OnInit {
 
-  constructor(private route: Router) { }
+  constructor(private route: Router, private logar: AuthService, private snackEmail: MatSnackBar) { }
 
   ngOnInit() {
   }
@@ -21,10 +23,37 @@ export class CreateUserComponent implements OnInit {
     }
   );
 
-  fazerLogin()
+  fazerLogin(e)
   {
     //comunica com o backend e aguarda a resposta.
+    e.preventDefault();
+    this.logar.registarUsuario({
+      nome: this.form.get('nome').value,
+          email: this.form.get('email').value,
+          pass: this.form.get('senha').value
+    }).subscribe(result => {
+      this.doLogin(e);
+    }, err => {
+      if (err.code === 'auth/email-already-in-use') {
+        this.openSnackBar('E-mail ja cadastrado');
+      }
+    });
   }
+  openSnackBar(frase) {
+     this.snackEmail.open(frase, 'OK', {
+      duration: 3000
+    });
+  }
+  doLogin(e)
+  {
+    e.preventDefault();
+    this.logar.login(this.form.get('email').value, this.form.get('senha').value).subscribe(result => {
+      this.route.navigate(['/dashboard']);
+    }, err => {
+      this.openSnackBar('Erro no login');
+    });
+  }
+
   criarLogin()
   {
     this.route.navigate(['/login']);
