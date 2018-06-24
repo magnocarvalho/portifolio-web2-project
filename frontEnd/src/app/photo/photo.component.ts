@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ApiService } from '../services/api.service';
 import { AuthService } from '../services/auth.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-photo',
@@ -10,9 +11,11 @@ import { AuthService } from '../services/auth.service';
 })
 export class PhotoComponent implements OnInit {
 
-  constructor(private api: ApiService, private user: AuthService) { }
+  constructor(private api: ApiService, private user: AuthService, private snackEmail: MatSnackBar) { }
   public usuario: any;
-  public id: String;
+  public id: String
+  public namePhoto = [];
+  public imagens = [];
   
   ngOnInit() {
     this.usuario = this.user.getUsuario();
@@ -22,31 +25,58 @@ export class PhotoComponent implements OnInit {
     nome: new FormControl('', [Validators.required]),
     photos: new FormControl()
   })
-  imagens : any;
+ 
 
   foto(e) {
-    const reader = new FileReader();
-    const rawImg: File = e.target.files[0];
+    // const reader = new FileReader();
+    for (let i = 0; i< e.target.files.length; i++) {
+      
+     this.salvarFotos(e.target.files[i], i);
+
+    }
+    // let result: string;
+    // reader.onload = (img) => {
+    //   this.imagens = reader.result;
+    // };
+    // this.namePhoto = rawImg.name;
+    // reader.readAsDataURL(rawImg);
+
+
+  }
+  salvarFotos(rawImg: File, i)
+  {
     let result: string;
+    const reader = new FileReader();
     reader.onload = (img) => {
-      this.imagens = reader.result;
+      this.imagens.push(reader.result);
     };
+    this.namePhoto.push(rawImg.name);
     reader.readAsDataURL(rawImg);
-
-
   }
   onSalvarPhotos(e) {
     e.preventDefault();
     var obj = {
       nome: this.form.get('nome').value,
-      photos: this.imagens,
-      userID: this.id
+      photo: this.imagens,
+      userID: this.id,
+      namePhoto: this.namePhoto
     }
     console.log(obj.userID);
     this.api.salvarFotos(obj).subscribe(res =>{
-      console.log(res);
+
+      var tmp = JSON.parse(res._body);
+      console.log(tmp);
+      if(tmp.status == 500)
+      {
+       this.openSnackBar(res.message);
+      }
     })
 
   };
+  openSnackBar(frase) {
+    this.snackEmail.open(frase, 'OK', {
+      duration: 6000
+    });
+  }
 
 }

@@ -5,7 +5,8 @@ const mongoose = require("mongoose");
 let schema = {
     nome: { type: String },
     photos: { type: String },
-    userID: { type: mongoose.Schema.Types.ObjectId, ref: 'Usuario' }
+    userID: { type: mongoose.Schema.Types.ObjectId, ref: 'Usuario' },
+    namePhotos: { type: Array }
 };
 IDefault_1.Inject(schema);
 exports.photosMasterSchema = new mongoose.Schema(schema);

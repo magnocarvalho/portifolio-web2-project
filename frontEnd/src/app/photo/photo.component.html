@@ -1,14 +1,25 @@
 <mat-toolbar color="primary">
   <span>Portifolio</span>
-  <span><button mat-raised-button><mat-icon>add_circle_outline</mat-icon>Fotos</button></span>
-  <span><button mat-raised-button><mat-icon>exit_to_app</mat-icon>Logout</button></span>
+  <span>
+    <button mat-raised-button>
+      <mat-icon>add_circle_outline</mat-icon>Fotos</button>
+  </span>
+  <span>
+    <button mat-raised-button>
+      <mat-icon>exit_to_app</mat-icon>Logout</button>
+  </span>
 </mat-toolbar>
-<form fxLayout="column" fxLayoutAlign="space-between stretch" [formGroup]="form">
-    <mat-form-field class="encaixar entrada-texto">
-        <input matInput placeholder="Nome do album" type="tel" formControlName="nome">
-      </mat-form-field>
-  <div class="encaixar entrada-texto btlLogo" >
+<form fxLayout="column" fxLayoutAlign="space-between center" [formGroup]="form">
+  <mat-form-field class="encaixar entrada-texto">
+    <input matInput placeholder="Nome do album" type="tel" formControlName="nome" required>
+    <mat-error *ngIf="form.get('nome').hasError('required')">
+      Nome do album é
+      <strong>exigido</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <div class="encaixar entrada-texto btlLogo">
     <input type="file" accept="image/*" formControlName="photos" (change)="foto($event)" multiple>
   </div>
-  <button mat-button (click)="onSalvarPhotos($event)">Action</button>
+  <button mat-button (click)="onSalvarPhotos($event)" color="primary">Salvar fotos</button>
 </form>

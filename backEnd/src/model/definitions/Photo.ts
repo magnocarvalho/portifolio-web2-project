@@ -5,7 +5,8 @@ export interface IUsuarioPhotos extends IDefault{
 
     id: string;
     nome?: string;
-    photos?: any;
+    photos?: any[];
+    namePhotos?: any[];
     userID?: string;
     
 }
@@ -14,7 +15,8 @@ let schema = {
     
     nome: { type: String }, //Nome Completo
     photos: { type: String}, // arry com as fotos do album
-    userID: { type: mongoose.Schema.Types.ObjectId, ref: 'Usuario' } 
+    userID: { type: mongoose.Schema.Types.ObjectId, ref: 'Usuario' },
+    namePhotos: {type: Array}
 };
 
 

@@ -15,17 +15,23 @@ class PhotoCtlr{
       static putPhotos(req, res, next) {
         var obj = req.body;
         var nomeAlbum = obj.nome;
-        var nomePhoto = obj.photos;
+        var nomePhoto = obj.namePhoto;
         var userId = obj.userID;
-        console.log(userId);
-        if (obj.photos) {
-          var base64Data = obj.photos.replace(/^data:image\/[a-z]+;base64,/, "");
-          obj.photos = userId + ".png";
+        var photoname = [];
+      
+        if (obj.photo) {
           fs.mkdirSync("./bin/assets/"+userId+"/" + nomeAlbum + "/");
-          fs.writeFile("./bin/assets/" + userId  +"/"+ nomeAlbum + "/foto.png", base64Data, 'base64', function (err) {
-              if (err)
-                  console.log("err = " + err);
-          });
+        for (let i = 0; i < nomePhoto.length; i++) {
+            var base64Data = obj.photo[i].replace(/^data:image\/[a-z]+;base64,/, "");
+            photoname.push("assets/" + userId  +"/"+ nomeAlbum + "/" + nomePhoto[i] + ".png");            
+            fs.writeFile("./bin/assets/" + userId  +"/"+ nomeAlbum + "/" + nomePhoto[i] + ".png", base64Data, 'base64', function (err) {
+                if (err)
+                    console.log("err = " + err);
+                  });
+        }
+
+        console.log(photoname);
+        obj.namePhotos = photoname;
       }
         photosModel.create(obj, (err, data) => {
           if (err) next(err);
