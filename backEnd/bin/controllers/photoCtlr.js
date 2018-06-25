@@ -26,7 +26,13 @@ class PhotoCtlr {
             for (let i = 0; i < nomePhoto.length; i++) {
                 var base64Data = obj.photo[i].replace(/^data:image\/[a-z]+;base64,/, "");
                 photoname.push("assets/" + userId + "/" + nomeAlbum + "/" + nomePhoto[i] + ".png");
-                fs.writeFile("./bin/assets/" + userId + "/" + nomeAlbum + "/" + nomePhoto[i] + ".png", base64Data, 'base64', function (err) {
+                fs.writeFile("./bin/assets/" +
+                    userId +
+                    "/" +
+                    nomeAlbum +
+                    "/" +
+                    nomePhoto[i] +
+                    ".png", base64Data, "base64", function (err) {
                     if (err)
                         console.log("err = " + err);
                 });
@@ -63,6 +69,58 @@ class PhotoCtlr {
             res.json(data);
         }, err => {
             next(err);
+        });
+    }
+    static addFotos(req, res, next) {
+        var obj = req.body;
+        var nomeAlbum = obj.nome;
+        var nomePhoto = obj.namePhoto;
+        var userId = obj.userID;
+        var photoname = [];
+        if (!fs.existsSync("./bin/assets/" + userId)) {
+            fs.mkdirSync("./bin/assets/" + userId);
+        }
+        if (!fs.existsSync("./bin/assets/" + userId + "/" + nomeAlbum)) {
+            fs.mkdirSync("./bin/assets/" + userId + "/" + nomeAlbum + "/");
+        }
+        if (obj.photo) {
+            for (let i = 0; i < nomePhoto.length; i++) {
+                var base64Data = obj.photo[i].replace(/^data:image\/[a-z]+;base64,/, "");
+                photoname.push("assets/" + userId + "/" + nomeAlbum + "/" + nomePhoto[i] + ".png");
+                fs.writeFile("./bin/assets/" +
+                    userId +
+                    "/" +
+                    nomeAlbum +
+                    "/" +
+                    nomePhoto[i] +
+                    ".png", base64Data, "base64", function (err) {
+                    if (err)
+                        console.log("err = " + err);
+                });
+            }
+        }
+        for (let i = 0; i < photoname.length; i++) {
+            obj.namePhotos = photoname[i];
+        }
+        console.log(photoname);
+        PhotoCtlr.addFotosArray(obj).then(data => {
+            res.json(data);
+        }, err => {
+            next(err);
+        });
+    }
+    static addFotosArray(obj) {
+        return new Promise((resolve, reject) => {
+            Photo_1.photosModel.findOneAndUpdate({ _id: obj.id }, { $push: { namePhotos: obj.namePhotos } }, { safe: true, upsert: true }, function (err, doc) {
+                if (err) {
+                    console.log(err);
+                    reject(err);
+                }
+                else {
+                    console.log(doc);
+                    resolve(doc);
+                }
+            });
         });
     }
     static deleteFoto(obj) {

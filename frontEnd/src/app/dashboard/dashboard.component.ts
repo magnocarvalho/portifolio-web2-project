@@ -4,6 +4,7 @@ import { AuthService } from '../services/auth.service';
 import { ApiService } from '../services/api.service';
 import { MatSnackBar, MatDialog } from '@angular/material';
 import { DialogComponent } from '../dialog/dialog.component';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-dashboard',
@@ -21,11 +22,18 @@ export class DashboardComponent implements OnInit {
   public photos: any;
   public fotosAlbum = [];
   public listaFotos = false;
-
+  public id: String
+  public namePhoto = [];
+  public imagens = [];
+  public usuario: any;
+  public novasFotos = false;
 
   ngOnInit() {
     this.url = this.api.IMG;
+    this.usuario = this.auth.getUsuario();
+    this.id = this.usuario._id;
     this.carregarAlbuns();
+   
   }
 
   openSnackBar(frase) {
@@ -35,7 +43,7 @@ export class DashboardComponent implements OnInit {
   }
 
   carregarAlbuns() {
-    this.api.carregarAlbuns(this.auth.usuario._id).subscribe(res => {
+    this.api.carregarAlbuns(this.id).subscribe(res => {
       this.albuns = JSON.parse(res._body);
       console.log(this.albuns);
     }, err => {
@@ -43,9 +51,7 @@ export class DashboardComponent implements OnInit {
       this.openSnackBar('erro ao buscar imagens');
     })
   }
-  openDialog() {
-    
-  }
+  
   voltarAlbuns() {
     this.carregarAlbuns();
     this.fotosAlbum.pop();
@@ -88,6 +94,47 @@ export class DashboardComponent implements OnInit {
       console.error(err);
       this.openSnackBar('erro ao buscar fotos');
     })
+  }
+  addFotos(){
+    this.novasFotos = true;
+  }
+  atualizarFotos(e){
+    for (let i = 0; i < e.target.files.length; i++) {
+
+      this.salvarFotos(e.target.files[i], i);
+
+    }
+  }
+  enviarFotos()
+  {
+    var obj = {
+      id: this.photos._id,
+      photo: this.imagens,
+      namePhoto: this.namePhoto,
+      nome: this.photos.nome,
+      userID: this.id
+    }
+    this.api.adicionarFotos(obj).subscribe(sub =>{
+      console.log(sub);
+      this.openSnackBar('Novas fotos add ao album ' + this.photos.nome);
+      this.fotosAlbum.pop();
+      this.selecionaAlbum(obj.id);
+      this.imagens.pop();
+      this.namePhoto.pop();
+
+    }, err =>{
+      console.log(err);
+      this.openSnackBar('erro ao add novas fotos ');
+    })
+  }
+  salvarFotos(rawImg: File, i) {
+    let result: string;
+    const reader = new FileReader();
+    reader.onload = (img) => {
+      this.imagens.push(reader.result);
+    };
+    this.namePhoto.push(rawImg.name);
+    reader.readAsDataURL(rawImg);
   }
 
   criarAlbuns() {

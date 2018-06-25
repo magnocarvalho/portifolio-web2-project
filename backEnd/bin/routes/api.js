@@ -9,4 +9,5 @@ router.post('/salvarFotos', photoCtlr_1.default.putPhotos);
 router.get('/carregarAlbuns/:id', photoCtlr_1.default.buscarAlbuns);
 router.get('/carregarFotos/:id', photoCtlr_1.default.buscarAlbum);
 router.post('/apagarFoto', photoCtlr_1.default.deletarFoto);
+router.post('/addFotos', photoCtlr_1.default.addFotos);
 module.exports = router;
