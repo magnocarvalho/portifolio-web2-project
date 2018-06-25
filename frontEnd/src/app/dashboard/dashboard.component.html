@@ -1,4 +1,4 @@
-<mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="space-around center" >
+<mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="space-around center">
     <span>Portifolio</span>
     <span>
         <button mat-raised-button (click)="criarAlbuns()">
@@ -15,7 +15,6 @@
 </mat-toolbar>
 <div class="controler-albuns" *ngIf="!listaFotos">
     <div fxLayout='row' fxLayoutWrap class="cards">
-
         <div fxFlex="20" class="card-fotos" *ngFor="let fotos of albuns">
             <mat-card>
                 <mat-card-header>
@@ -41,4 +40,11 @@
             </mat-card>
         </div>
     </div>
-</div>
+    <button mat-raised-button (click)="addFotos()"  color="primary">Adicionar Fotos no Album</button>
+    <div class="encaixar entrada-texto btlLogo" *ngIf="novasFotos">
+        <form>
+        <input type="file" accept="image/*"  (change)="atualizarFotos($event)" multiple>
+        <button mat-raised-button (click)="enviarFotos()">Atualizar Album</button>
+        </form>
+         </div>
+    </div>
