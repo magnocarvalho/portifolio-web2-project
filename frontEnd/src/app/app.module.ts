@@ -40,12 +40,12 @@ import { PhotoComponent } from './photo/photo.component';
     PhotoComponent
   ],
   imports: [
-    BrowserModule, RouterModule, MatButtonModule, MatCheckboxModule,
+    BrowserModule, RouterModule, MatCheckboxModule,
     FormsModule, MatButtonModule, MatCheckboxModule, BrowserAnimationsModule,
     MatGridListModule, MatCardModule, FlexLayoutModule, AppRoutes,
     MatFormFieldModule, MatProgressBarModule, MatRadioModule,
     MatToolbarModule, MatMenuModule, MatCardModule, MatInputModule,
-    ReactiveFormsModule, MatSnackBarModule, HttpModule, MatIconModule, MatSidenavModule, MatListModule
+    ReactiveFormsModule, MatSnackBarModule, HttpModule, MatIconModule, MatSidenavModule, MatListModule, 
   ],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]

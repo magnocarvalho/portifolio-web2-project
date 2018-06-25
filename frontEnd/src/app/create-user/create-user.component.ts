@@ -11,7 +11,7 @@ import { MatSnackBar } from '@angular/material';
 })
 export class CreateUserComponent implements OnInit {
 
-  constructor(private route: Router, private logar: AuthService, private snackEmail: MatSnackBar) { }
+  constructor(private route: Router, private logar: AuthService, private snackEmail: MatSnackBar ) { }
 
   ngOnInit() {
   }

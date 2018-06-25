@@ -18,8 +18,9 @@ class PhotoCtlr {
         var nomePhoto = obj.namePhoto;
         var userId = obj.userID;
         var photoname = [];
+        fs.mkdirSync("./bin/assets/" + userId);
+        fs.mkdirSync("./bin/assets/" + userId + "/" + nomeAlbum + "/");
         if (obj.photo) {
-            fs.mkdirSync("./bin/assets/" + userId + "/" + nomeAlbum + "/");
             for (let i = 0; i < nomePhoto.length; i++) {
                 var base64Data = obj.photo[i].replace(/^data:image\/[a-z]+;base64,/, "");
                 photoname.push("assets/" + userId + "/" + nomeAlbum + "/" + nomePhoto[i] + ".png");

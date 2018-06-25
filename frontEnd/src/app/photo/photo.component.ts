@@ -16,7 +16,7 @@ export class PhotoComponent implements OnInit {
   public id: String
   public namePhoto = [];
   public imagens = [];
-  
+
   ngOnInit() {
     this.usuario = this.user.getUsuario();
     this.id = this.usuario._id;
@@ -25,13 +25,13 @@ export class PhotoComponent implements OnInit {
     nome: new FormControl('', [Validators.required]),
     photos: new FormControl()
   })
- 
+
 
   foto(e) {
     // const reader = new FileReader();
-    for (let i = 0; i< e.target.files.length; i++) {
-      
-     this.salvarFotos(e.target.files[i], i);
+    for (let i = 0; i < e.target.files.length; i++) {
+
+      this.salvarFotos(e.target.files[i], i);
 
     }
     // let result: string;
@@ -43,8 +43,7 @@ export class PhotoComponent implements OnInit {
 
 
   }
-  salvarFotos(rawImg: File, i)
-  {
+  salvarFotos(rawImg: File, i) {
     let result: string;
     const reader = new FileReader();
     reader.onload = (img) => {
@@ -61,16 +60,14 @@ export class PhotoComponent implements OnInit {
       userID: this.id,
       namePhoto: this.namePhoto
     }
-    console.log(obj.userID);
-    this.api.salvarFotos(obj).subscribe(res =>{
-
-      var tmp = JSON.parse(res._body);
+    this.api.salvarFotos(obj).subscribe(res => {
+      this.openSnackBar("fotos salvas com sucesso");
+    }, err => {
+      
+      var tmp = JSON.parse(err._body);
       console.log(tmp);
-      if(tmp.status == 500)
-      {
-       this.openSnackBar(res.message);
-      }
-    })
+      this.openSnackBar(tmp.message);
+    });
 
   };
   openSnackBar(frase) {
