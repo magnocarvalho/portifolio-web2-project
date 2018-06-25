@@ -65,6 +65,37 @@ class PhotoCtlr{
         }
       );
     }
+    static deletarFoto(req, res, next)
+    {
+      var obj = req.body;
+      console.log(obj);
+      PhotoCtlr.deleteFoto(obj).then(
+        data => {
+          res.json(data);
+        },
+        err => {
+          next(err);
+        }
+      );
+    }
+    private static deleteFoto(obj)
+    {
+      return new Promise<IUsuarioPhotos>((resolve, reject) => {
+        photosModel.findByIdAndUpdate(obj.id,
+          {$pull: {namePhotos: obj.name}},
+          {safe: true, upsert: true},
+          function(err, doc) {
+              if(err){
+              console.log(err);
+              reject(err);
+              }else{
+              console.log(doc);
+              resolve(doc);
+              }
+          }
+      );
+    });
+  }
     private static getById(id) {
       return new Promise<IUsuarioPhotos>((resolve, reject) => {
         photosModel.findOne({ isDeleted: false, _id: id }, (err, data) => {

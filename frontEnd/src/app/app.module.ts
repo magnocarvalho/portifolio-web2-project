@@ -51,6 +51,7 @@ import { DialogComponent } from './dialog/dialog.component';
     ReactiveFormsModule, MatSnackBarModule, HttpModule, MatIconModule, MatSidenavModule, MatListModule,
     MatDialogModule
   ],
+  entryComponents: [DialogComponent],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]
 })

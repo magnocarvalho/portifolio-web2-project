@@ -44,13 +44,7 @@ export class DashboardComponent implements OnInit {
     })
   }
   openDialog() {
-    const dialogRef = this.dialog.open(DialogComponent, {
-      height: '350px'
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+    
   }
   voltarAlbuns() {
     this.carregarAlbuns();
@@ -59,6 +53,30 @@ export class DashboardComponent implements OnInit {
   }
   deletarFoto(f) {
     console.log(f);
+    const dialogRef = this.dialog.open(DialogComponent, {
+      height: '400px',
+    width: '600px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Dialog result:' + result);
+      if(result != false)
+      {
+        var obj = {
+          id: this.photos._id,
+          name: f 
+        }
+        console.log(obj);
+        this.api.apagarFoto(obj).subscribe(res => {
+          this.openSnackBar('foto deletada com sucesso');
+          this.fotosAlbum.pop();
+          this.selecionaAlbum(this.photos._id);
+        }, err => {
+          console.error(err);
+          this.openSnackBar('foto nao foi deletada');
+        })
+      }
+    });
   }
   selecionaAlbum(id) {
     this.api.carregarAlbum(id).subscribe(res => {
