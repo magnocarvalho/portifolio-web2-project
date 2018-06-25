@@ -31,8 +31,6 @@ class PhotoCtlr{
                     console.log("err = " + err);
                   });
         }
-
-        console.log(photoname);
         obj.namePhotos = photoname;
       }
         photosModel.create(obj, (err, data) => {

@@ -12,6 +12,7 @@ export class ApiService {
   constructor(private basicService: BasicService, private http: Http, private router: Router) { }
 
   URL = 'http://localhost:1337/api/';
+  IMG =  'http://localhost:1337/';
   userData: {
     name: string,
     email: String,

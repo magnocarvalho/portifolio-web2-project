@@ -45,7 +45,7 @@ export class AuthService {
     });
     this.api.fazerLogin(obj).subscribe(res => {
       this.usuario = JSON.parse(res._body);
-      console.log(this.usuario);
+      // console.log(this.usuario._id);
       sub.next(res);
     }, userErr => {
       sub.error(userErr);

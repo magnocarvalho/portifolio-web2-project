@@ -45,7 +45,7 @@ import { PhotoComponent } from './photo/photo.component';
     MatGridListModule, MatCardModule, FlexLayoutModule, AppRoutes,
     MatFormFieldModule, MatProgressBarModule, MatRadioModule,
     MatToolbarModule, MatMenuModule, MatCardModule, MatInputModule,
-    ReactiveFormsModule, MatSnackBarModule, HttpModule, MatIconModule, MatSidenavModule, MatListModule, 
+    ReactiveFormsModule, MatSnackBarModule, HttpModule, MatIconModule, MatSidenavModule, MatListModule,
   ],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]

@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ApiService } from '../services/api.service';
 import { AuthService } from '../services/auth.service';
 import { MatSnackBar } from '@angular/material';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-photo',
@@ -11,7 +12,7 @@ import { MatSnackBar } from '@angular/material';
 })
 export class PhotoComponent implements OnInit {
 
-  constructor(private api: ApiService, private user: AuthService, private snackEmail: MatSnackBar) { }
+  constructor(private api: ApiService, private user: AuthService, private snackEmail: MatSnackBar, private router: Router) { }
   public usuario: any;
   public id: String
   public namePhoto = [];
@@ -74,6 +75,10 @@ export class PhotoComponent implements OnInit {
     this.snackEmail.open(frase, 'OK', {
       duration: 6000
     });
+  }
+  verAlbuns()
+  {
+    this.router.navigate(['/dashboard']);
   }
 
 }
