@@ -25,10 +25,12 @@ import {
   MatSnackBarModule,
   MatIconModule,
   MatSidenavModule,
-  MatListModule
+  MatListModule,
+  MatDialogModule
 } from '@angular/material';
 import { HttpModule } from '@angular/http';
 import { PhotoComponent } from './photo/photo.component';
+import { DialogComponent } from './dialog/dialog.component';
 
 
 @NgModule({
@@ -37,7 +39,8 @@ import { PhotoComponent } from './photo/photo.component';
     LoginComponent,
     CreateUserComponent,
     DashboardComponent,
-    PhotoComponent
+    PhotoComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule, RouterModule, MatCheckboxModule,
@@ -46,6 +49,7 @@ import { PhotoComponent } from './photo/photo.component';
     MatFormFieldModule, MatProgressBarModule, MatRadioModule,
     MatToolbarModule, MatMenuModule, MatCardModule, MatInputModule,
     ReactiveFormsModule, MatSnackBarModule, HttpModule, MatIconModule, MatSidenavModule, MatListModule,
+    MatDialogModule
   ],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]

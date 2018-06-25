@@ -58,7 +58,7 @@ class PhotoCtlr {
     }
     static getById(id) {
         return new Promise((resolve, reject) => {
-            UsuarioModel.findOne({ isDeleted: false, id: id }, (err, data) => {
+            Photo_1.photosModel.findOne({ isDeleted: false, _id: id }, (err, data) => {
                 if (err || data === null)
                     reject(err);
                 else {

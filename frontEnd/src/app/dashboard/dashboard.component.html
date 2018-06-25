@@ -1,15 +1,19 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="space-around center" >
     <span>Portifolio</span>
     <span>
         <button mat-raised-button (click)="criarAlbuns()">
             <mat-icon>add_circle_outline</mat-icon>Albuns</button>
     </span>
     <span>
+        <button mat-raised-button (click)="voltarAlbuns()" *ngIf="listaFotos">
+            <mat-icon>photo_album</mat-icon>Albuns</button>
+    </span>
+    <span>
         <button mat-raised-button>
             <mat-icon>exit_to_app</mat-icon>Logout</button>
     </span>
 </mat-toolbar>
-<div class="controler-albuns">
+<div class="controler-albuns" *ngIf="!listaFotos">
     <div fxLayout='row' fxLayoutWrap class="cards">
 
         <div fxFlex="20" class="card-fotos" *ngFor="let fotos of albuns">
@@ -19,10 +23,20 @@
                 </mat-card-header>
                 <img mat-card-image src="{{url}}{{fotos.namePhotos[0]}}" alt="Fotos da {{fotos.nome}}">
                 <mat-card-actions>
-                    <button mat-button>
-                        <mat-icon>favorite</mat-icon>
-                    </button>
-                    <button mat-button>SHARE</button>
+                    <button mat-button (click)="selecionaAlbum(fotos._id)">Abrir Album</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>
+<div class="lista-fotos" *ngIf="listaFotos">
+    <div fxLayout='row' fxLayoutWrap class="cards">
+
+        <div fxFlex="20" class="card-fotos" *ngFor="let f of fotosAlbum[0]">
+            <mat-card>
+                <img mat-card-image src="{{url}}{{f}}" alt="img de album">
+                <mat-card-actions>
+                    <button mat-button (click)="deletarFoto(f)">deletar</button>
                 </mat-card-actions>
             </mat-card>
         </div>
