@@ -9,5 +9,7 @@ router.post('/salvarUsuario', UsuarioCtrl.create);
 router.post('/loginUser', UsuarioCtrl.login);
 
 router.post('/salvarFotos', PhotoCtlr.putPhotos);
+router.get('/carregarAlbuns/:id',PhotoCtlr.buscarAlbuns);
+router.get('/carregarFotos/:id',PhotoCtlr.buscarAlbum);
 
 export = router;

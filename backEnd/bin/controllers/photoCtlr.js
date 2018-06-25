@@ -18,7 +18,9 @@ class PhotoCtlr {
         var nomePhoto = obj.namePhoto;
         var userId = obj.userID;
         var photoname = [];
-        fs.mkdirSync("./bin/assets/" + userId);
+        if (!fs.existsSync("./bin/assets/" + userId)) {
+            fs.mkdirSync("./bin/assets/" + userId);
+        }
         fs.mkdirSync("./bin/assets/" + userId + "/" + nomeAlbum + "/");
         if (obj.photo) {
             for (let i = 0; i < nomePhoto.length; i++) {
@@ -36,6 +38,44 @@ class PhotoCtlr {
                 next(err);
             else
                 res.json(data);
+        });
+    }
+    static buscarAlbuns(req, res, next) {
+        var obj = req.params.id;
+        PhotoCtlr.getByIdUser(obj).then(data => {
+            res.json(data);
+        }, err => {
+            next(err);
+        });
+    }
+    static buscarAlbum(req, res, next) {
+        var obj = req.params.id;
+        PhotoCtlr.getById(obj).then(data => {
+            res.json(data);
+        }, err => {
+            next(err);
+        });
+    }
+    static getById(id) {
+        return new Promise((resolve, reject) => {
+            UsuarioModel.findOne({ isDeleted: false, id: id }, (err, data) => {
+                if (err || data === null)
+                    reject(err);
+                else {
+                    resolve(data);
+                }
+            });
+        });
+    }
+    static getByIdUser(id) {
+        return new Promise((resolve, reject) => {
+            Photo_1.photosModel.find({ isDeleted: false, userID: id }, (err, data) => {
+                if (err || data === null)
+                    reject(err);
+                else {
+                    resolve(data);
+                }
+            });
         });
     }
 }

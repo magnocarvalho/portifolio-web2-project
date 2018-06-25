@@ -1,4 +1,4 @@
-import { photosModel } from './../model/definitions/Photo';
+import { photosModel, IUsuarioPhotos } from './../model/definitions/Photo';
 
 
 const fs = require("fs");
@@ -18,7 +18,10 @@ class PhotoCtlr{
         var nomePhoto = obj.namePhoto;
         var userId = obj.userID;
         var photoname = [];
-        fs.mkdirSync("./bin/assets/"+userId);
+        if(!fs.existsSync("./bin/assets/"+userId))
+        {
+          fs.mkdirSync("./bin/assets/"+userId);
+        }
         fs.mkdirSync("./bin/assets/"+userId+"/" + nomeAlbum + "/");
 
         if (obj.photo) {
@@ -37,6 +40,51 @@ class PhotoCtlr{
           if (err) next(err);
           else res.json(data);
         });
+    }
+    static buscarAlbuns(req, res, next)
+    {
+      var obj = req.params.id;
+      PhotoCtlr.getByIdUser(obj).then(
+        data => {
+          res.json(data);
+        },
+        err => {
+          next(err);
+        }
+      );
+    }
+    static buscarAlbum(req, res, next)
+    {
+      var obj = req.params.id;
+      PhotoCtlr.getById(obj).then(
+        data => {
+          res.json(data);
+        },
+        err => {
+          next(err);
+        }
+      );
+    }
+    private static getById(id) {
+      return new Promise<IUsuarioPhotos>((resolve, reject) => {
+        UsuarioModel.findOne({ isDeleted: false, id: id }, (err, data) => {
+          if (err || data === null) reject(err);
+          else {
+            resolve(data);
+          }
+        });
+      });
+    }
+    
+    private static getByIdUser(id) {
+      return new Promise<IUsuarioPhotos>((resolve, reject) => {
+        photosModel.find({ isDeleted: false, userID: id }, (err, data) => {
+          if (err || data === null) reject(err);
+          else {
+            resolve(data);
+          }
+        });
+      });
     }
 }
 export default PhotoCtlr;

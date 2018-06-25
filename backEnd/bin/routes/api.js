@@ -6,4 +6,6 @@ var router = express.Router();
 router.post('/salvarUsuario', UsuarioCtrl_1.default.create);
 router.post('/loginUser', UsuarioCtrl_1.default.login);
 router.post('/salvarFotos', photoCtlr_1.default.putPhotos);
+router.get('/carregarAlbuns/:id', photoCtlr_1.default.buscarAlbuns);
+router.get('/carregarFotos/:id', photoCtlr_1.default.buscarAlbum);
 module.exports = router;

@@ -1,5 +1,30 @@
 <mat-toolbar color="primary">
     <span>Portifolio</span>
-    <span><button mat-raised-button (click)="criarAlbuns()"><mat-icon>add_circle_outline</mat-icon>Albuns</button></span>
-    <span><button mat-raised-button><mat-icon>exit_to_app</mat-icon>Logout</button></span>
+    <span>
+        <button mat-raised-button (click)="criarAlbuns()">
+            <mat-icon>add_circle_outline</mat-icon>Albuns</button>
+    </span>
+    <span>
+        <button mat-raised-button>
+            <mat-icon>exit_to_app</mat-icon>Logout</button>
+    </span>
 </mat-toolbar>
+<div class="controler-albuns">
+    <div fxLayout='row' fxLayoutWrap class="cards">
+
+        <div fxFlex="20" class="card-fotos" *ngFor="let fotos of albuns">
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>{{fotos.nome}}</mat-card-title>
+                </mat-card-header>
+                <img mat-card-image src="{{url}}{{fotos.namePhotos[0]}}" alt="Fotos da {{fotos.nome}}">
+                <mat-card-actions>
+                    <button mat-button>
+                        <mat-icon>favorite</mat-icon>
+                    </button>
+                    <button mat-button>SHARE</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>

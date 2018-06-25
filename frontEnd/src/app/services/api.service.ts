@@ -75,5 +75,9 @@ export class ApiService {
   {
     return this.doRequest('post', 'salvarFotos', obj);
   }
+  carregarAlbuns(id)
+  {
+    return this.doRequest('get', 'carregarAlbuns/'+id);
+  }
 
 }

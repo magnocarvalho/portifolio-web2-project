@@ -1,0 +1,14 @@
+.cards {
+    width: 400px;
+}
+.card-fotos
+{
+    min-width: 100%;
+    margin: 40px;
+}
+.controler-albuns
+{
+    width: 100%;
+    min-height: 100%;
+    overflow-y: auto;
+}
