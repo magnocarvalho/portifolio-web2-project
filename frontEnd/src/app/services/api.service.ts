@@ -79,5 +79,17 @@ export class ApiService {
   {
     return this.doRequest('get', 'carregarAlbuns/'+id);
   }
+  carregarAlbum(id)
+  {
+    return this.doRequest('get', 'carregarFotos/' + id);
+  }
+  apagarFoto(obj)
+  {
+    return this.doRequest('post', 'apagarFoto', obj);
+  }
+  adicionarFotos(obj)
+  {
+    return this.doRequest('post', 'addFotos', obj);
+  }
 
 }
