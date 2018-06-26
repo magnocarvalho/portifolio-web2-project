@@ -4,12 +4,12 @@ const fs = require("fs");
 class UsuarioCtrl {
   static create(req, res, next) {
     var obj = req.body;
-
     UsuarioModel.create(obj, (err, data) => {
       if (err) next(err);
       else res.json(data);
     });
   }
+ 
   static login(req, res, next) {
       var obj = req.body;
       var email = obj.email;

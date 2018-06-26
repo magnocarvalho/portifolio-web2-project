@@ -12,7 +12,6 @@ export class AuthService {
   public onLogin: Observable<boolean>;
   public usuario: any;
 
-
   constructor(private api: ApiService) {
     this.onLogin = new Observable<boolean>(res => {
       this.sub = res;
@@ -47,7 +46,7 @@ export class AuthService {
     this.api.fazerLogin(obj).subscribe(res => {
       this.usuario = JSON.parse(res._body);
       localStorage.setItem('id', this.usuario._id);
-      // console.log(this.usuario._id);
+      
       sub.next(res);
     }, userErr => {
       sub.error(userErr);

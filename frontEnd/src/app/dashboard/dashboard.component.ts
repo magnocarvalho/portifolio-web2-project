@@ -5,7 +5,7 @@ import { ApiService } from '../services/api.service';
 import { MatSnackBar, MatDialog } from '@angular/material';
 import { DialogComponent } from '../dialog/dialog.component';
 import { FormGroup, FormControl } from '@angular/forms';
-
+ 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -139,7 +139,12 @@ export class DashboardComponent implements OnInit {
   }
 
   criarAlbuns() {
-    this.router.navigate(['/photos']);;
+    console.log("porra");
+    this.router.navigate(['/photos']);
   }
-
+  logout() {
+    localStorage.removeItem('id');
+    //debugger;
+    this.router.navigate(['/login']);
+  }
 }

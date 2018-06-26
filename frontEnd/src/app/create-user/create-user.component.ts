@@ -58,8 +58,4 @@ export class CreateUserComponent implements OnInit {
     });
   }
 
-  criarLogin() {
-    this.route.navigate(['/login']);
-  }
-
 }

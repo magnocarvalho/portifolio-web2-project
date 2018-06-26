@@ -1,7 +1,7 @@
 <mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="space-around center">
     <span>Portifolio</span>
     <span>
-        <button mat-raised-button (click)="criarAlbuns()">
+        <button mat-raised-button  routerLink="/photos">
             <mat-icon>add_circle_outline</mat-icon>Albuns</button>
     </span>
     <span>
@@ -9,12 +9,12 @@
             <mat-icon>photo_album</mat-icon>Albuns</button>
     </span>
     <span>
-        <button mat-raised-button>
+        <button mat-raised-button (click)="logout()">
             <mat-icon>exit_to_app</mat-icon>Logout</button>
     </span>
 </mat-toolbar>
-<div class="controler-albuns" *ngIf="!listaFotos" fxLayout='row wrap'>
-    <div fxLayout='column'  class="cards">
+<div class="controler-albuns" *ngIf="!listaFotos" fxLayout='row'>
+    <div fxLayout='row wrap'  class="cards">
         <div fxFlex="20" class="card-fotos" *ngFor="let fotos of albuns">
             <mat-card>
                 <mat-card-header>
@@ -28,11 +28,10 @@
         </div>
     </div>
 </div>
-<div  class="lista-fotos" *ngIf="listaFotos">
-    <div fxLayout='row wrap' class="cards">
-
-        <div fxFlex="10" class="card-fotos" *ngFor="let f of fotosAlbum[0]">
-            <mat-card>
+<div class="lista-fotos" *ngIf="listaFotos">
+    <div fxLayout="row wrap" class="cards">
+        <div class="card-fotos" *ngFor="let f of fotosAlbum[0]">
+            <mat-card fxFlex="200">
                 <img mat-card-image src="{{url}}{{f}}" alt="img de album">
                 <mat-card-actions>
                     <button mat-button (click)="deletarFoto(f)">deletar</button>
@@ -42,9 +41,9 @@
     </div>
     <button mat-raised-button (click)="addFotos()"  color="primary">Adicionar Fotos no Album</button>
     <div class="encaixar entrada-texto btlLogo" *ngIf="novasFotos">
-        <form>
+        <form> 
             <input type="file" accept="image/*"  (change)="atualizarFotos($event)" multiple>
             <button mat-raised-button (click)="enviarFotos()">Atualizar Album</button>
         </form>
-         </div>
-    </div>
+     </div>
+</div>

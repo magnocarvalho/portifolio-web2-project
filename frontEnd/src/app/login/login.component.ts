@@ -42,9 +42,5 @@ export class LoginComponent implements OnInit {
       this.openSnackBar('Erro no login');
     });
   }
-  criarLogin()
-  {
-    this.route.navigate(['/create-user']);
-  }
 
 }

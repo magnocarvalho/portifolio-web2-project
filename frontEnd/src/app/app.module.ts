@@ -5,12 +5,12 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { AppRoutes } from './app.routes';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule, Routes } from '@angular/router';
 import {
   MatButtonModule,
   MatCheckboxModule,
