@@ -1,5 +1,4 @@
 "use strict";
-/// <reference path="../typings/index.d.ts" />
 Object.defineProperty(exports, "__esModule", { value: true });
 const dotenv = require("dotenv");
 dotenv.config();

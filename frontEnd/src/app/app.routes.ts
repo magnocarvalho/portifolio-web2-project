@@ -14,18 +14,11 @@ const routes: Routes = [
         pathMatch: 'full'
     },
     {
-        path: '**',
-        redirectTo: '/dashboard',
-        pathMatch: 'full'
-    },
-    {
         path: 'login',
-        canActivate: [AuthGuardService],
         component: LoginComponent
     },
     {
         path: 'create-user',
-        canActivate: [AuthGuardService],
         component: CreateUserComponent
     },
     {

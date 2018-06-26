@@ -15,7 +15,7 @@ export class BasicService {
   }
 
   loading(isLoading) {
-    this.observable.next(isLoading);
+    //this.observable.next(isLoading);
   }
 
 }

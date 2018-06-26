@@ -1,5 +1,7 @@
+
 import { IDefault, Inject } from './IDefault';
 import * as mongoose from 'mongoose';
+import { IUsuarioModel } from './Usuario';
 
 export interface IUsuarioPhotos extends IDefault{
 
@@ -8,7 +10,7 @@ export interface IUsuarioPhotos extends IDefault{
     photos?: any[];
     namePhotos?: any[];
     userID?: string;
-    
+ 
 }
 
 let schema = {

@@ -19,8 +19,8 @@ export class PhotoComponent implements OnInit {
   public imagens = [];
 
   ngOnInit() {
-    this.usuario = this.user.getUsuario();
-    this.id = this.usuario._id;
+    this.usuario = localStorage.getItem('id');
+    this.id = localStorage.getItem('id');
   }
   form = new FormGroup({
     nome: new FormControl('', [Validators.required]),

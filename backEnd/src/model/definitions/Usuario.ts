@@ -1,3 +1,4 @@
+
 import { IDefault, Inject } from './IDefault';
 import * as mongoose from 'mongoose';
 
@@ -16,7 +17,6 @@ let schema = {
     nome: { type: String }, //Nome Completo
     
 };
-
 
 Inject(schema);
 export const UsuarioMasterSchema = new mongoose.Schema(schema);
