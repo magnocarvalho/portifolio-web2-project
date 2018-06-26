@@ -30,6 +30,7 @@ export class AuthService {
     });
     this.api.salvarUser(obj).subscribe(user => {
       sub.next(user);
+      console.log(user);
     }, userErr => {
       console.log(userErr);
       sub.error(userErr);
@@ -45,6 +46,7 @@ export class AuthService {
     });
     this.api.fazerLogin(obj).subscribe(res => {
       this.usuario = JSON.parse(res._body);
+      localStorage.setItem('id', this.usuario._id);
       // console.log(this.usuario._id);
       sub.next(res);
     }, userErr => {

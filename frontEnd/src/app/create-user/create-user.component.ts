@@ -50,7 +50,7 @@ export class CreateUserComponent implements OnInit {
       email: this.form.get('email').value,
       pass: this.form.get('pass').value
     }).subscribe(result => {
-      console.log(result);
+      //console.log(result); // body contém o id que será usado para fazer a autenticação
       this.route.navigate(['/dashboard']);
     }, err => {
       console.error(err);

@@ -13,8 +13,8 @@
             <mat-icon>exit_to_app</mat-icon>Logout</button>
     </span>
 </mat-toolbar>
-<div class="controler-albuns" *ngIf="!listaFotos">
-    <div fxLayout='row' fxLayoutWrap class="cards">
+<div class="controler-albuns" *ngIf="!listaFotos" fxLayout='row wrap'>
+    <div fxLayout='column'  class="cards">
         <div fxFlex="20" class="card-fotos" *ngFor="let fotos of albuns">
             <mat-card>
                 <mat-card-header>
@@ -28,10 +28,10 @@
         </div>
     </div>
 </div>
-<div class="lista-fotos" *ngIf="listaFotos">
-    <div fxLayout='row' fxLayoutWrap class="cards">
+<div  class="lista-fotos" *ngIf="listaFotos">
+    <div fxLayout='row wrap' class="cards">
 
-        <div fxFlex="20" class="card-fotos" *ngFor="let f of fotosAlbum[0]">
+        <div fxFlex="10" class="card-fotos" *ngFor="let f of fotosAlbum[0]">
             <mat-card>
                 <img mat-card-image src="{{url}}{{f}}" alt="img de album">
                 <mat-card-actions>
@@ -43,8 +43,8 @@
     <button mat-raised-button (click)="addFotos()"  color="primary">Adicionar Fotos no Album</button>
     <div class="encaixar entrada-texto btlLogo" *ngIf="novasFotos">
         <form>
-        <input type="file" accept="image/*"  (change)="atualizarFotos($event)" multiple>
-        <button mat-raised-button (click)="enviarFotos()">Atualizar Album</button>
+            <input type="file" accept="image/*"  (change)="atualizarFotos($event)" multiple>
+            <button mat-raised-button (click)="enviarFotos()">Atualizar Album</button>
         </form>
          </div>
     </div>

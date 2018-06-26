@@ -16,7 +16,8 @@ export class DashboardComponent implements OnInit {
   constructor(private router: Router,
     private auth: AuthService,
     private api: ApiService,
-    private snackbar: MatSnackBar, private dialog: MatDialog) { }
+    private snackbar: MatSnackBar,
+    private dialog: MatDialog) { }
   public albuns: any;
   public url = '';
   public photos: any;
@@ -31,7 +32,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.url = this.api.IMG;
     this.usuario = this.auth.getUsuario();
-    this.id = this.usuario._id;
+    this.id = localStorage.getItem('id');
     this.carregarAlbuns();
    
   }
