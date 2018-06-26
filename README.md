@@ -6,4 +6,9 @@ nescessario para rodar o projeto
 
 use MongoDB 3.4;
 
-npm install --save 
+npm install --save pasta backEnd e frontEnd
+
+MongoD para iniciar o banco de dados 
+
+npm start  pasta backEnd e frontEnd 
+
