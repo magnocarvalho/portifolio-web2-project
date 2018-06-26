@@ -47,7 +47,7 @@ import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
     DialogComponent
   ],
   imports: [
-    BrowserModule, RouterModule, MatCheckboxModule,
+    BrowserModule, RouterModule,
     FormsModule, MatButtonModule, MatCheckboxModule, BrowserAnimationsModule,
     MatGridListModule, MatCardModule, FlexLayoutModule, AppRoutes,
     MatFormFieldModule, MatProgressBarModule, MatRadioModule,

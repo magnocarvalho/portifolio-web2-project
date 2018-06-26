@@ -32,3 +32,7 @@ body {
     z-index: 2;
     width: 100%  !important;
   }
+  .controle-altura
+  {
+      padding-top: 60px;
+  }
