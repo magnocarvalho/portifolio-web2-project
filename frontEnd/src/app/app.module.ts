@@ -31,6 +31,10 @@ import {
 import { HttpModule } from '@angular/http';
 import { PhotoComponent } from './photo/photo.component';
 import { DialogComponent } from './dialog/dialog.component';
+import { LoadingBarHttpModule } from '@ngx-loading-bar/http';
+import { HttpClientModule } from '@angular/common/http';
+import { LoadingBarModule } from '@ngx-loading-bar/core';
+import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 
 
 @NgModule({
@@ -49,7 +53,7 @@ import { DialogComponent } from './dialog/dialog.component';
     MatFormFieldModule, MatProgressBarModule, MatRadioModule,
     MatToolbarModule, MatMenuModule, MatCardModule, MatInputModule,
     ReactiveFormsModule, MatSnackBarModule, HttpModule, MatIconModule, MatSidenavModule, MatListModule,
-    MatDialogModule
+    MatDialogModule, LoadingBarHttpModule, HttpClientModule, LoadingBarModule,  LoadingBarHttpClientModule
   ],
   entryComponents: [DialogComponent],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
