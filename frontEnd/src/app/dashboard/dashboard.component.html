@@ -13,7 +13,7 @@
             <mat-icon>exit_to_app</mat-icon>Logout</button>
     </span>
 </mat-toolbar>
-<div class="controler-albuns controle-altura" *ngIf="!listaFotos" fxLayout='row'>
+<div fxLayout="column" fxLayoutAlign="space-around center"  class="controler-albuns controle-altura" *ngIf="!listaFotos">
     <div fxLayout='row wrap'  class="cards">
         <div fxFlex="20" class="card-fotos" *ngFor="let fotos of albuns">
             <mat-card>
@@ -28,7 +28,7 @@
         </div>
     </div>
 </div>
-<div class="lista-fotos controle-altura" *ngIf="listaFotos">
+<div fxLayout="column" fxLayoutAlign="space-around center"  class="lista-fotos controle-altura" *ngIf="listaFotos">
     <div fxLayout="row wrap" class="cards">
         <div class="card-fotos" *ngFor="let f of fotosAlbum[0]">
             <mat-card fxFlex="200">
