@@ -1,21 +1,21 @@
-<mat-toolbar color="primary" fxLayout="row" class="fixed-header" fxLayoutAlign="space-around center">
-    <span>Portifolio</span>
-    <span>
+<mat-toolbar color="primary" fxLayout="row" class="fixed-header">
+    <span >Portifolio</span>
+    <span fxFlexOffset="50px" fxLayoutAlign="start" fxFlex="33%">
         <button mat-raised-button  routerLink="/photos">
             <mat-icon>add_circle_outline</mat-icon>Albuns</button>
     </span>
-    <span>
+    <span fxFlex="33%">
         <button mat-raised-button (click)="voltarAlbuns()" *ngIf="listaFotos">
             <mat-icon>photo_album</mat-icon>Albuns</button>
     </span>
-    <span>
+    <span fxLayoutAlign="end" fxFlex="33%">
         <button mat-raised-button (click)="logout()">
             <mat-icon>exit_to_app</mat-icon>Logout</button>
     </span>
 </mat-toolbar>
 <div fxLayout="column" fxLayoutAlign="space-around center"  class="controler-albuns controle-altura" *ngIf="!listaFotos">
     <div fxLayout='row wrap'  class="cards">
-        <div fxFlex="20" class="card-fotos" *ngFor="let fotos of albuns">
+        <div fxFlex="350px" class="card-fotos" *ngFor="let fotos of albuns">
             <mat-card>
                 <mat-card-header>
                     <mat-card-title>{{fotos.nome}}</mat-card-title>
