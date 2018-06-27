@@ -13,7 +13,8 @@
             <mat-icon>exit_to_app</mat-icon>Logout</button>
     </span>
 </mat-toolbar>
-<div fxLayout="column" fxLayoutAlign="space-around center"  class="controler-albuns controle-altura" *ngIf="!listaFotos">
+<div fxLayout="column" fxLayoutAlign="space-around center"
+  class="controler-albuns controle-altura" *ngIf="!listaFotos">
     <div fxLayout='row wrap'  class="cards">
         <div fxFlex="350px" class="card-fotos" *ngFor="let fotos of albuns">
             <mat-card>
@@ -30,8 +31,8 @@
 </div>
 <div fxLayout="column" fxLayoutAlign="space-around center"  class="lista-fotos controle-altura" *ngIf="listaFotos">
     <div fxLayout="row wrap" class="cards">
-        <div class="card-fotos" *ngFor="let f of fotosAlbum[0]">
-            <mat-card fxFlex="200">
+        <div fxFlex="350px" class="card-fotos" *ngFor="let f of fotosAlbum[0]">
+            <mat-card>
                 <img mat-card-image src="{{url}}{{f}}" alt="img de album">
                 <mat-card-actions>
                     <button mat-button (click)="deletarFoto(f)">deletar</button>
