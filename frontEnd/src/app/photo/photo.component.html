@@ -3,16 +3,17 @@
   <span fxFlexOffset="50px" fxFlexLayoutAlign="start" fxFlex="90%">
     <button mat-raised-button (click)="verAlbuns()">
       <mat-icon>photo_album</mat-icon>Albuns</button>
-  </span>
+  </span> 
   <span fxFlexLayoutAlign="end" fxFlex="10%">
     <button mat-raised-button>
       <mat-icon>exit_to_app</mat-icon>Logout</button>
   </span>
 </mat-toolbar>
-<div class="controle-altura">
+<div class="container">
 
-
-<form fxLayout="column controle-altura" fxLayoutAlign="space-between center" [formGroup]="form">
+<form fxLayout="column controle-altura"
+ style="padding: 100px 0;"
+ [formGroup]="form">
   <mat-form-field class="encaixar entrada-texto">
     <input matInput placeholder="Nome do album" type="tel" formControlName="nome" required>
     <mat-error *ngIf="form.get('nome').hasError('required')">
@@ -21,9 +22,24 @@
     </mat-error>
   </mat-form-field>
 
-  <div class="encaixar entrada-texto btlLogo">
-    <input type="file" accept="image/*" formControlName="photos" (change)="foto($event)" multiple>
+  <div fxLayout="column"  fxFlexOffset="50px" class="encaixar entrada-texto btlLogo">
+    <label for="upload">Choose photos</label>
+    <input type="file" id="upload" 
+     accept="image/*" formControlName="photos" (change)="foto($event)" multiple>
+     <div class="container-photos">
+        <div fxLayout="column" *ngFor="let photo of photos">
+            <span fxLayout="row" class="photo-record">
+              <span fxFlexLayoutAlign="start" fxFlex="94%">
+                <mat-icon>file_copy</mat-icon> {{photo}}
+               </span>
+             <span fxFlexLayoutAlign="end" fxFlex="6%">
+               <mat-icon class="clear" (click)="popPhoto(photo)">clear</mat-icon>
+             </span>
+           </span>
+          </div>
+     </div>
+     
   </div>
-  <button mat-raised-button color="primary" (click)="onSalvarPhotos($event)">Salvar fotos</button>
+  <button fxFlexOffset="50px" mat-raised-button color="primary" (click)="onSalvarPhotos($event)">Salvar fotos</button>
 </form>
 </div>

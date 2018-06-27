@@ -1,0 +1,67 @@
+label {
+ border: 1px solid transparent;
+ background-color: #673ab7;
+ color: white;
+ padding: 20px;
+ font-size: 1.2rem; 
+ font-family: Roboto,"Helvetica Neue",sans-serif;
+ border-radius: 4px;
+ text-align: center;
+ width: 50%;
+ margin: 0 auto;
+}
+label:hover {
+ cursor: pointer;
+}
+#upload {
+ visibility: hidden;
+}
+.container {
+ width: 35%;
+ margin: 0 auto;
+}
+form button {
+ width: 120px;
+ margin: 0 auto;
+}
+.clear {
+ color: rgba(253, 5, 5, 0.822);
+ cursor: pointer;
+}
+.photo-record {
+ padding: 5px 0;
+ margin-right: 10px;
+ border-bottom: 1px solid rgba(0,0,0,.05);
+ box-shadow: inset 3px 0px 5px rgba(0,0,0,0.05);
+}
+.photo-record:hover {
+ background-color: rgba(0,0,0,0.05);
+ cursor: auto;
+}
+.container-photos {
+ max-height: 300px;
+ overflow-y: auto;
+}
+::-webkit-scrollbar {
+ width: 5px;
+}
+::-webkit-scrollbar:hover{
+ width: 10px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+ -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+ -webkit-border-radius: 10px;
+ border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+ -webkit-border-radius: 10px;
+ border-radius: 10px;
+ background: rgba(218, 218, 218, 0.8); 
+ -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+::-webkit-scrollbar-thumb:window-inactive {
+background: rgba(255,0,0,0.4); 
+}

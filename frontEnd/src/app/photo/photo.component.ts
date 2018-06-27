@@ -17,7 +17,7 @@ export class PhotoComponent implements OnInit {
   public id: String
   public namePhoto = [];
   public imagens = [];
-
+  public photos: string[] = [];
   ngOnInit() {
     this.usuario = localStorage.getItem('id');
     this.id = localStorage.getItem('id');
@@ -30,11 +30,13 @@ export class PhotoComponent implements OnInit {
 
   foto(e) {
     // const reader = new FileReader();
+    
     for (let i = 0; i < e.target.files.length; i++) {
 
       this.salvarFotos(e.target.files[i], i);
-
+      this.photos.push(e.target.files[i].name);
     }
+
     // let result: string;
     // reader.onload = (img) => {
     //   this.imagens = reader.result;
@@ -80,5 +82,11 @@ export class PhotoComponent implements OnInit {
   {
     this.router.navigate(['/dashboard']);
   }
-
+  popPhoto(photo: string) {
+    console.log(photo);
+    this.photos = this.photos.filter(photoitem => photoitem !== photo);
+    const pos = this.namePhoto.indexOf(p => p === photo);
+    this.namePhoto = this.namePhoto.filter(np => np !== photo);
+    this.imagens = this.imagens.filter((element, i) =>  i !== pos);
+  }
 }
