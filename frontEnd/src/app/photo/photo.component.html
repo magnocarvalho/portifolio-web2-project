@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" class="fixed-header">
   <span>Portifolio</span>
   <span>
     <button mat-raised-button (click)="verAlbuns()">
@@ -9,7 +9,10 @@
       <mat-icon>exit_to_app</mat-icon>Logout</button>
   </span>
 </mat-toolbar>
-<form fxLayout="column" fxLayoutAlign="space-between center" [formGroup]="form">
+<div class="controle-altura">
+
+
+<form fxLayout="column controle-altura" fxLayoutAlign="space-between center" [formGroup]="form">
   <mat-form-field class="encaixar entrada-texto">
     <input matInput placeholder="Nome do album" type="tel" formControlName="nome" required>
     <mat-error *ngIf="form.get('nome').hasError('required')">
@@ -23,3 +26,4 @@
   </div>
   <button mat-raised-button color="primary" (click)="onSalvarPhotos($event)">Salvar fotos</button>
 </form>
+</div>
