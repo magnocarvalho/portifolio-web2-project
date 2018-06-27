@@ -1,6 +1,9 @@
+body {
+    box-sizing: border-box;
+}
 .cards {
-    width: 400px;
-
+    margin:40px;
+    width: 100%;
 }
 .card-fotos
 {
@@ -11,7 +14,6 @@
 {
     width: 100%;
     min-height: 100%;
-    overflow-wrap: normal;
 }
 .lista-fotos
 {

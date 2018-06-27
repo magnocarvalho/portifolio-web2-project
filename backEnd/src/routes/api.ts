@@ -3,15 +3,48 @@ import UsuarioCtrl from '../controllers/UsuarioCtrl';
 import { photosModel } from '../model/definitions/Photo';
 import PhotoCtlr from '../controllers/photoCtlr';
 
+var mcache = require('memory-cache');
+
 var router = express.Router();
 
-router.post('/salvarUsuario', UsuarioCtrl.create);
+var cache = (duration) => {
+  return (req, res, next) => {
+   let key = '__express__' + req.originalUrl || req.url
+   let cachedBody = mcache.get(key)
+   if (cachedBody) {
+    console.log("tem algo no cache");
+     res.send(cachedBody)
+     return
+   } else {
+    console.log("não existe");
+     res.sendResponse = res.send
+     res.send = (body) => {
+       //console.log(body);
+       mcache.put(key, body, duration * 100000);
+       res.sendResponse(body)
+     }
+    next();
+   }
+ }
+}
+var descache = () => {
+ return (req, res, next) => {
+  let key = '__express__' + req.originalUrl || req.url;
+  let cachedBody = mcache.get(mcache.keys()[0]);
+  if(cachedBody){
+    mcache.clear();
+  }
+  next();
+   
+ }
+}
+router.post('/salvarUsuario',UsuarioCtrl.create);
 router.post('/loginUser', UsuarioCtrl.login);
 
-router.post('/salvarFotos', PhotoCtlr.putPhotos);
-router.get('/carregarAlbuns/:id',PhotoCtlr.buscarAlbuns);
-router.get('/carregarFotos/:id',PhotoCtlr.buscarAlbum);
-router.post('/apagarFoto', PhotoCtlr.deletarFoto);
-router.post('/addFotos', PhotoCtlr.addFotos);
+router.post('/salvarFotos', descache() ,PhotoCtlr.putPhotos);
+router.get('/carregarAlbuns/:id', cache(10),PhotoCtlr.buscarAlbuns);
+router.get('/carregarFotos/:id', cache(10),PhotoCtlr.buscarAlbum);
+router.post('/apagarFoto', descache(),PhotoCtlr.deletarFoto);
+router.post('/addFotos', descache(),PhotoCtlr.addFotos);
 
 export = router;

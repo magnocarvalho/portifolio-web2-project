@@ -33,7 +33,6 @@ export class ApiService {
     let options = new RequestOptions({ headers: headers });
     if (!data)
       data = {};
-    data["dt"] = new Date();
     var callback = res => {
       if (res.status === 444) {
         this.router.navigate(['/auth']);
