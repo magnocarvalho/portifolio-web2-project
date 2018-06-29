@@ -12,7 +12,10 @@ import { Router } from '@angular/router';
 })
 export class PhotoComponent implements OnInit {
 
-  constructor(private api: ApiService, private user: AuthService, private snackEmail: MatSnackBar, private router: Router) { }
+  constructor(private api: ApiService, 
+              private user: AuthService,
+              private snackEmail: MatSnackBar,
+              private router: Router) { }
   public usuario: any;
   public id: String
   public namePhoto = [];
@@ -60,11 +63,12 @@ export class PhotoComponent implements OnInit {
     var obj = {
       nome: this.form.get('nome').value,
       photo: this.imagens,
-      userID: this.id,
+      userID: this.id ,
       namePhoto: this.namePhoto
     }
     this.api.salvarFotos(obj).subscribe(res => {
       this.openSnackBar("fotos salvas com sucesso");
+      this.router.navigate(['/dashboard']);
     }, err => {
       
       var tmp = JSON.parse(err._body);
@@ -84,9 +88,14 @@ export class PhotoComponent implements OnInit {
   }
   popPhoto(photo: string) {
     console.log(photo);
+    console.log(this.namePhoto);
     this.photos = this.photos.filter(photoitem => photoitem !== photo);
-    const pos = this.namePhoto.indexOf(p => p === photo);
-    this.namePhoto = this.namePhoto.filter(np => np !== photo);
-    this.imagens = this.imagens.filter((element, i) =>  i !== pos);
+    const pos = this.namePhoto.indexOf(photo);
+    console.log(pos);
+    this.namePhoto = this.namePhoto.filter(np => np != photo);
+    console.log(this.namePhoto);
+    console.log(this.imagens);
+    this.imagens = this.imagens.filter((element, i) =>  i == pos);
+    console.log(this.imagens);
   }
 }
