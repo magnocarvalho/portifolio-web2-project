@@ -28,6 +28,7 @@ export class DashboardComponent implements OnInit {
   public imagens = [];
   public usuario: any;
   public novasFotos = false;
+  public idDoAlbum = '';
 
   ngOnInit() {
     this.url = this.api.IMG;
@@ -70,7 +71,7 @@ export class DashboardComponent implements OnInit {
       if(result != false)
       {
         var obj = {
-          id: this.photos._id,
+          _id: this.idDoAlbum,
           name: f 
         }
         console.log(obj);
@@ -86,8 +87,12 @@ export class DashboardComponent implements OnInit {
     });
   }
   selecionaAlbum(id) {
+    console.log(this.fotosAlbum);
+    console.log(id);
     this.api.carregarAlbum(id).subscribe(res => {
       this.photos = JSON.parse(res._body);
+      this.idDoAlbum = id;
+      console.log('id do album ' + this.idDoAlbum);
       this.fotosAlbum.push(this.photos.namePhotos);
       console.log(this.fotosAlbum);
       this.listaFotos = true;
@@ -139,7 +144,7 @@ export class DashboardComponent implements OnInit {
   }
 
   criarAlbuns() {
-    console.log("porra");
+
     this.router.navigate(['/photos']);
   }
   logout() {

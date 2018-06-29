@@ -40,6 +40,6 @@ router.post('/loginUser', UsuarioCtrl_1.default.login);
 router.post('/salvarFotos', descache(), photoCtlr_1.default.putPhotos);
 router.get('/carregarAlbuns/:id', cache(10), photoCtlr_1.default.buscarAlbuns);
 router.get('/carregarFotos/:id', cache(10), photoCtlr_1.default.buscarAlbum);
-router.post('/apagarFoto', descache(), photoCtlr_1.default.deletarFoto);
-router.post('/addFotos', descache(), photoCtlr_1.default.addFotos);
+router.post('/apagarFoto', photoCtlr_1.default.deletarFoto);
+router.put('/addFotos', descache(), photoCtlr_1.default.addFotos);
 module.exports = router;

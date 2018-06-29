@@ -88,7 +88,7 @@ export class ApiService {
   }
   adicionarFotos(obj)
   {
-    return this.doRequest('post', 'addFotos', obj);
+    return this.doRequest('put', 'addFotos', obj);
   }
 
 }

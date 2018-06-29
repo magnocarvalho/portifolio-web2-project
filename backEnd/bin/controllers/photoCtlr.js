@@ -64,7 +64,7 @@ class PhotoCtlr {
     }
     static deletarFoto(req, res, next) {
         var obj = req.body;
-        console.log(obj);
+        console.log(req);
         PhotoCtlr.deleteFoto(obj).then(data => {
             res.json(data);
         }, err => {
@@ -125,13 +125,13 @@ class PhotoCtlr {
     }
     static deleteFoto(obj) {
         return new Promise((resolve, reject) => {
-            Photo_1.photosModel.findByIdAndUpdate(obj.id, { $pull: { namePhotos: obj.name } }, { safe: true, upsert: true }, function (err, doc) {
+            Photo_1.photosModel.findByIdAndUpdate(obj._id, { $pull: { namePhotos: obj.name } }, { safe: true, upsert: true }, function (err, doc) {
                 if (err) {
-                    console.log(err);
+                    console.log('erro a deletar a foto' + obj + err);
                     reject(err);
                 }
                 else {
-                    console.log(doc);
+                    console.log('deletou a foto' + obj + doc);
                     resolve(doc);
                 }
             });

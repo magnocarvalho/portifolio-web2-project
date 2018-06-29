@@ -42,9 +42,9 @@ router.post('/salvarUsuario',UsuarioCtrl.create);
 router.post('/loginUser', UsuarioCtrl.login);
 
 router.post('/salvarFotos', descache() ,PhotoCtlr.putPhotos);
-router.get('/carregarAlbuns/:id', cache(10),PhotoCtlr.buscarAlbuns);
-router.get('/carregarFotos/:id', cache(10),PhotoCtlr.buscarAlbum);
-router.post('/apagarFoto', descache(),PhotoCtlr.deletarFoto);
-router.post('/addFotos', descache(),PhotoCtlr.addFotos);
+router.get('/carregarAlbuns/:id', cache(10), PhotoCtlr.buscarAlbuns);
+router.get('/carregarFotos/:id', cache(10), PhotoCtlr.buscarAlbum);
+router.post('/apagarFoto', PhotoCtlr.deletarFoto);
+router.put('/addFotos', descache(),PhotoCtlr.addFotos);
 
 export = router;
