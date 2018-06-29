@@ -11,7 +11,7 @@
 </mat-toolbar>
 <div class="container">
 
-<form fxLayout="column controle-altura"
+<form #photoForm="ngForm" fxLayout="column controle-altura"
  style="padding: 100px 0;"
  [formGroup]="form">
   <mat-form-field class="encaixar entrada-texto">
@@ -23,14 +23,15 @@
   </mat-form-field>
 
   <div fxLayout="column"  fxFlexOffset="50px" class="encaixar entrada-texto btlLogo">
-    <label for="upload">Choose photos</label>
+    <label for="upload">Carregar Fotos</label>
     <input type="file" id="upload" 
-     accept="image/*" formControlName="photos" (change)="foto($event)" multiple>
+     accept="image/*" formControlName="photos"
+      (change)="foto($event)" multiple>
      <div class="container-photos">
         <div fxLayout="column" *ngFor="let photo of photos">
             <span fxLayout="row" class="photo-record">
               <span fxFlexLayoutAlign="start" fxFlex="94%">
-                <mat-icon>file_copy</mat-icon> {{photo}}
+                <mat-icon class="file-icon">insert_photo</mat-icon> <span class="name-photo"> {{photo}}</span>
                </span>
              <span fxFlexLayoutAlign="end" fxFlex="6%">
                <mat-icon class="clear" (click)="popPhoto(photo)">clear</mat-icon>
@@ -40,6 +41,8 @@
      </div>
      
   </div>
-  <button fxFlexOffset="50px" mat-raised-button color="primary" (click)="onSalvarPhotos($event)">Salvar fotos</button>
+  <button fxFlexOffset="50px" mat-raised-button color="primary" 
+  [disabled]="!photoForm.form.valid"
+  (click)="onSalvarPhotos($event)">Salvar fotos</button>
 </form>
 </div>

@@ -39,8 +39,15 @@ form button {
  cursor: auto;
 }
 .container-photos {
- max-height: 300px;
+ max-height: 200px;
  overflow-y: auto;
+}
+.file-icon {
+ margin-left: 10px;
+ color: #673ab7;
+}
+.name-photo {
+ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 ::-webkit-scrollbar {
  width: 5px;
@@ -61,7 +68,4 @@ form button {
  border-radius: 10px;
  background: rgba(218, 218, 218, 0.8); 
  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
-}
-::-webkit-scrollbar-thumb:window-inactive {
-background: rgba(255,0,0,0.4); 
 }

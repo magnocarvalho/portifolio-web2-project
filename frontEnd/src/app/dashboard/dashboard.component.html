@@ -21,7 +21,12 @@
                 <mat-card-header>
                     <mat-card-title>{{fotos.nome}}</mat-card-title>
                 </mat-card-header>
-                <img mat-card-image src="{{url}}{{fotos.namePhotos[0]}}" alt="Fotos da {{fotos.nome}}">
+                <img mat-card-image src="{{url}}{{fotos.namePhotos[0]}}"
+                *ngIf="fotos.namePhotos.length != 0" 
+                alt="Fotos da {{fotos.nome}}">
+                <div *ngIf="fotos.namePhotos.length == 0" class="not-image">
+                    <mat-icon>wallpaper</mat-icon>
+                </div>
                 <mat-card-actions>
                     <button mat-button (click)="selecionaAlbum(fotos._id)">Abrir Album</button>
                 </mat-card-actions>
@@ -29,7 +34,8 @@
         </div>
     </div>
 </div>
-<div fxLayout="column" fxLayoutAlign="space-around center"  class="lista-fotos controle-altura" *ngIf="listaFotos">
+<div fxLayout="column" fxLayoutAlign="space-around center"
+  class="lista-fotos controle-altura" *ngIf="listaFotos">
     <div fxLayout="row wrap" class="cards">
         <div fxFlex="350px" class="card-fotos" *ngFor="let f of fotosAlbum[0]">
             <mat-card>
@@ -46,7 +52,7 @@
     </div>
     <div class="encaixar entrada-texto btlLogo" *ngIf="novasFotos">
         <form> 
-            <input type="file" accept="image/*"  (change)="atualizarFotos($event)" multiple>
+            <input type="file" accept="image/*" (change)="atualizarFotos($event)" multiple>
             <button mat-raised-button (click)="enviarFotos()">Atualizar Album</button>
         </form>
      </div>

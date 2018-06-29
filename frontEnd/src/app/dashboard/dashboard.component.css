@@ -20,3 +20,12 @@ body {
     width: 100%;
     height: 100%;
 }
+.not-image {
+    background-color: rgba(247, 223, 194, 0.233);
+    height: 250px;
+    text-align: center;
+    color: bisque;
+}
+.not-image mat-icon {
+    padding: 110px 0;
+}
