@@ -10,6 +10,7 @@ export interface IUsuarioPhotos extends IDefault{
     photos?: any[];
     namePhotos?: any[];
     userID?: string;
+    
  
 }
 
