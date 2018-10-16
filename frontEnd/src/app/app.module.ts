@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { CreateUserComponent } from './create-user/create-user.component';
@@ -35,6 +34,8 @@ import { LoadingBarHttpModule } from '@ngx-loading-bar/http';
 import { HttpClientModule } from '@angular/common/http';
 import { LoadingBarModule } from '@ngx-loading-bar/core';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
+import {PlatformModule} from '@angular/cdk/platform';
+import {ObserversModule} from '@angular/cdk/observers';
 
 
 @NgModule({
@@ -47,11 +48,11 @@ import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
     DialogComponent
   ],
   imports: [
-    BrowserModule, RouterModule,
+    BrowserModule, RouterModule, 
     FormsModule, MatButtonModule, MatCheckboxModule, BrowserAnimationsModule,
     MatGridListModule, MatCardModule, FlexLayoutModule, AppRoutes, 
     MatFormFieldModule, MatProgressBarModule, MatRadioModule,
-    MatToolbarModule, MatMenuModule, MatCardModule, MatInputModule,
+    MatToolbarModule, MatMenuModule, MatInputModule,
     ReactiveFormsModule, MatSnackBarModule, HttpModule, MatIconModule, MatSidenavModule, MatListModule,
     MatDialogModule, LoadingBarHttpModule, HttpClientModule, LoadingBarModule,  LoadingBarHttpClientModule
   ],

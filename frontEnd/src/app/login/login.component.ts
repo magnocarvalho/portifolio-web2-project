@@ -30,8 +30,9 @@ export class LoginComponent implements OnInit {
 
   fazerLogin(e)
   {
-    //comunica com o backend e aguarda a resposta.
+ 
     e.preventDefault();
+
     this.logar.login({
       email: this.form.get('email').value,
       pass: this.form.get('pass').value

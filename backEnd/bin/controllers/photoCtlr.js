@@ -64,7 +64,7 @@ class PhotoCtlr {
     }
     static deletarFoto(req, res, next) {
         var obj = req.body;
-        console.log(req);
+        // console.log(req);
         PhotoCtlr.deleteFoto(obj).then(data => {
             res.json(data);
         }, err => {
