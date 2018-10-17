@@ -36,6 +36,7 @@ import { LoadingBarModule } from '@ngx-loading-bar/core';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import {PlatformModule} from '@angular/cdk/platform';
 import {ObserversModule} from '@angular/cdk/observers';
+import { AfiliadosComponent } from './afiliados/afiliados.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import {ObserversModule} from '@angular/cdk/observers';
     CreateUserComponent,
     DashboardComponent,
     PhotoComponent,
-    DialogComponent
+    DialogComponent,
+    AfiliadosComponent
   ],
   imports: [
     BrowserModule, RouterModule, 

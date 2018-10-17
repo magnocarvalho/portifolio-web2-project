@@ -1,0 +1,17 @@
+.segundo mat-grid-tile{
+    background: lightblue;
+  }
+  .primeiro mat-grid-tile{
+      background: lightpink;
+  }
+  .terceiro{
+
+    background: lightgreen;
+}
+.primeiroa{
+    border-left: 1px solid white;
+}
+.quarto
+{
+    background: lightseagreen;
+}

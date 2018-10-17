@@ -6,12 +6,17 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { OnInit, NgModule } from '@angular/core';
 import { PhotoComponent } from './photo/photo.component';
 import { AuthGuardService } from './services/auth-guard.service';
+import { AfiliadosComponent } from './afiliados/afiliados.component';
 
 const routes: Routes = [
     {
         path: '',
-        redirectTo: '/login',
+        redirectTo: '/afiliados',
         pathMatch: 'full'
+    },
+    {
+        path: 'afiliados',
+        component: AfiliadosComponent
     },
     {
         path: 'login',
@@ -22,7 +27,7 @@ const routes: Routes = [
         component: CreateUserComponent
     },
     {
-        path:'dashboard',
+        path: 'dashboard',
         canActivate: [AuthGuardService],
         component: DashboardComponent
     },
@@ -37,15 +42,15 @@ const routes: Routes = [
     imports: [RouterModule.forRoot(routes, { useHash: false })],
     exports: [RouterModule],
     providers: [
-      { provide: PathLocationStrategy, useClass: PathLocationStrategy },
-  
+        { provide: PathLocationStrategy, useClass: PathLocationStrategy },
+
     ]
-  })
-  export class AppRoutes implements OnInit {
-  
+})
+export class AppRoutes implements OnInit {
+
     constructor(private router: Router) {
     }
-  
+
     ngOnInit() {
     }
-  }
+}

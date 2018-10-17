@@ -1,0 +1,262 @@
+<mat-toolbar color="primary" fxLayout="row" class="">
+  <span>Falovechik</span>
+  <span fxFlexOffset="50px" fxLayoutAlign="start" fxFlex="33%">
+    <button mat-raised-button routerLink="/photos">
+      <mat-icon>add_circle_outline</mat-icon>Albuns
+    </button>
+  </span>
+  <span fxFlex="33%">
+    <button mat-raised-button (click)="voltarAlbuns()" *ngIf="listaFotos">
+      <mat-icon>photo_album</mat-icon>Albuns
+    </button>
+  </span>
+  <span fxLayoutAlign="end" fxFlex="33%">
+    <button mat-raised-button (click)="logout()">
+      <mat-icon>exit_to_app</mat-icon>Logout
+    </button>
+  </span>
+</mat-toolbar>
+<mat-grid-list cols="1" rowHeight="10:1" class="primeiro" color='lightpink'>
+  <mat-grid-tile>
+    <mat-icon>person_pin</mat-icon>
+  </mat-grid-tile>
+</mat-grid-list>
+<mat-grid-list class="segundo" cols="5" rowHeight="3:1">
+  <mat-grid-tile>
+    <mat-icon>person_pin</mat-icon>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-icon>person_pin</mat-icon>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-icon>person_pin</mat-icon>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-icon>person_pin</mat-icon>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-icon>person_pin</mat-icon>
+  </mat-grid-tile>
+</mat-grid-list>
+<div color="primary" class="terceiro" fxLayout="row">
+  <div class="primeiroa" fxFlex="20" fxLayout="row" fxLayoutAlign="space-around center">
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+  </div>
+  <div class="primeiroa" fxFlex="20" fxLayout="row" fxLayoutAlign="space-around center">
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+  </div>
+  <div class="primeiroa" fxFlex="20" fxLayout="row" fxLayoutAlign="space-around center">
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+  </div>
+  <div class="primeiroa" fxFlex="20" fxLayout="row" fxLayoutAlign="space-around center">
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+  </div>
+  <div class="primeiroa" fxFlex="20" fxLayout="row" fxLayoutAlign="space-around center">
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+  </div>
+</div>
+<div color="primary" class="quarto" fxLayout="row">
+  <div class="primeiroa" fxFlex="20" fxLayout="row" fxLayoutAlign="space-around center">
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+  </div>
+  <div class="primeiroa" fxFlex="20" fxLayout="row" fxLayoutAlign="space-around center">
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+  </div>
+  <div class="primeiroa" fxFlex="20" fxLayout="row" fxLayoutAlign="space-around center">
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+  </div>
+  <div class="primeiroa" fxFlex="20" fxLayout="row" fxLayoutAlign="space-around center">
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+  </div>
+  <div class="primeiroa" fxFlex="20" fxLayout="row" fxLayoutAlign="space-around center">
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+  </div>
+</div>
+<div color="primary" class="quarto" fxLayout="row">
+  <div class="primeiroa" fxFlex="20" fxLayout="row" fxLayoutAlign="space-around center">
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+  </div>
+  <div class="primeiroa" fxFlex="20" fxLayout="row" fxLayoutAlign="space-around center">
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+  </div>
+  <div class="primeiroa" fxFlex="20" fxLayout="row" fxLayoutAlign="space-around center">
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+  </div>
+  <div class="primeiroa" fxFlex="20" fxLayout="row" fxLayoutAlign="space-around center">
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+  </div>
+  <div class="primeiroa" fxFlex="20" fxLayout="row" fxLayoutAlign="space-around center">
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+  </div>
+</div>
+<div color="primary" class="quarto" fxLayout="row">
+  <div class="primeiroa" fxFlex="20" fxLayout="row" fxLayoutAlign="space-around center">
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+  </div>
+  <div class="primeiroa" fxFlex="20" fxLayout="row" fxLayoutAlign="space-around center">
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+  </div>
+  <div class="primeiroa" fxFlex="20" fxLayout="row" fxLayoutAlign="space-around center">
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+  </div>
+  <div class="primeiroa" fxFlex="20" fxLayout="row" fxLayoutAlign="space-around center">
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+  </div>
+  <div class="primeiroa" fxFlex="20" fxLayout="row" fxLayoutAlign="space-around center">
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+  </div>
+</div>
+<div color="primary" class="quarto" fxLayout="row">
+  <div class="primeiroa" fxFlex="20" fxLayout="row" fxLayoutAlign="space-around center">
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+  </div>
+  <div class="primeiroa" fxFlex="20" fxLayout="row" fxLayoutAlign="space-around center">
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+  </div>
+  <div class="primeiroa" fxFlex="20" fxLayout="row" fxLayoutAlign="space-around center">
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+  </div>
+  <div class="primeiroa" fxFlex="20" fxLayout="row" fxLayoutAlign="space-around center">
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+  </div>
+  <div class="primeiroa" fxFlex="20" fxLayout="row" fxLayoutAlign="space-around center">
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+  </div>
+</div>
+<div color="primary" class="quarto" fxLayout="row">
+  <div class="primeiroa" fxFlex="20" fxLayout="row" fxLayoutAlign="space-around center">
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+  </div>
+  <div class="primeiroa" fxFlex="20" fxLayout="row" fxLayoutAlign="space-around center">
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+  </div>
+  <div class="primeiroa" fxFlex="20" fxLayout="row" fxLayoutAlign="space-around center">
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+  </div>
+  <div class="primeiroa" fxFlex="20" fxLayout="row" fxLayoutAlign="space-around center">
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+  </div>
+  <div class="primeiroa" fxFlex="20" fxLayout="row" fxLayoutAlign="space-around center">
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+    <mat-icon>person_pin</mat-icon>
+  </div>
+</div>
